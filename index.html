@@ -1,74 +1,158 @@
 <!DOCTYPE html>
-<html lang="ru-BY">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Продвижение на картах в Минске | mapping.by - Локальное SEO</title>
-    <meta name="description" content="Ваши конкуренты уже в навигаторе. Разместим ваш бизнес на Яндекс.Картах, Google Maps и 2ГИС за 3 дня. Приводим горячих клиентов с улиц Минска.">
-    <meta name="keywords" content="продвижение на картах минск, яндекс бизнес, google maps беларусь, локальное seo, mapping by">
-    <meta name="geo.region" content="BY-HM" />
-    <meta name="geo.placename" content="Минск" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mapping.by/">
-    <meta property="og:title" content="Ваши конкуренты уже в навигаторе. А вы? | mapping.by">
-    <meta property="og:description" content="Разместим ваш бизнес на картах за 3 дня и приведем клиентов.">
-
-    <style>
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; margin: 0; color: #333; }
-        header { background: #fff; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        nav ul { list-style: none; padding: 0; text-align: center; }
-        nav ul li { display: inline; margin: 0 15px; }
-        nav a { text-decoration: none; color: #2c3e50; font-weight: bold; }
-        .hero { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 80px 20px; text-align: center; }
-        h1 { font-size: 2.5em; margin-bottom: 10px; color: #2c3e50; }
-        .descriptor { font-size: 1.2em; color: #555; max-width: 600px; margin: 0 auto 30px; }
-        .cta-button { background: #e74c3c; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 1.1em; transition: 0.3s; }
-        .cta-button:hover { background: #c0392b; }
-        .content { max-width: 800px; margin: 40px auto; padding: 20px; }
-        footer { background: #2c3e50; color: white; text-align: center; padding: 20px; margin-top: 50px; }
-        @media (max-width: 600px) { nav ul li { display: block; margin: 10px 0; } }
-    </style>
+  <meta charset="UTF-8">
+  <title>Mapping.by — продвижение на картах и локальное SEO в Беларуси</title>
+  <meta name="description" content="Помогаем малому бизнесу в Беларуси получать клиентов из Яндекс и Google карт: настройка карточек, локальное SEO, отзывы и простые сайты-визитки.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Mapping.by">
+  <meta name="keywords" content="Яндекс карты, Google Maps, 2ГИС, локальное SEO, продвижение на картах, Минск, Беларусь">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mapping.by">
+  <meta property="og:title" content="Mapping.by — приводим клиентов с карт">
+  <meta property="og:description" content="Размещаем и продвигаем бизнес на Яндекс, Google и 2ГИС, чтобы вас наконец нашли на карте.">
+  <meta property="og:url" content="https://mapping.by/">
+  <meta property="og:image" content="https://mapping.by/img/og-mapping.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mapping.by — продвижение на картах">
+  <meta name="twitter:description" content="Настраиваем поток клиентов из Яндекс и Google карт для малого бизнеса.">
+  <meta name="twitter:image" content="https://mapping.by/img/og-mapping.jpg">
+  <link rel="canonical" href="https://mapping.by/">
+  <link rel="icon" href="/img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-
-<header>
-    <div style="text-align:center; font-size: 24px; font-weight: bold;">mapping.by</div>
-    <nav>
-        <ul>
-            <li><a href="index.html" style="color:#e74c3c;">Главная</a></li>
-            <li><a href="simple-start.html">Быстрый старт</a></li>
-            <li><a href="geo-leader.html">Лидер района</a></li>
-            <li><a href="guaranteed-results.html">Гарантия</a></li>
-            <li><a href="ai-voice-search.html">AI поиск</a></li>
-        </ul>
+<header class="site-header" id="header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <img src="/img/logo-mapping.svg" alt="Логотип агентства Mapping.by" class="logo-img">
+      <span class="logo-text">Mapping.by</span>
+    </a>
+    <nav class="main-nav">
+      <a href="/" class="nav-link">Главная</a>
+      <a href="/services.html" class="nav-link">Услуги</a>
+      <a href="/cases.html" class="nav-link">Кейсы</a>
+      <a href="/faq.html" class="nav-link">FAQ</a>
+      <a href="/blog.html" class="nav-link">Блог</a>
+      <a href="/contact.html" class="nav-link nav-link-primary">Контакты</a>
     </nav>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню">☰</button>
+  </div>
+  <nav class="mobile-nav" id="mobileMenu">
+    <a href="/" class="nav-link">Главная</a>
+    <a href="/services.html" class="nav-link">Услуги</a>
+    <a href="/cases.html" class="nav-link">Кейсы</a>
+    <a href="/faq.html" class="nav-link">FAQ</a>
+    <a href="/blog.html" class="nav-link">Блог</a>
+    <a href="/contact.html" class="nav-link nav-link-primary">Контакты</a>
+  </nav>
 </header>
 
 <main>
-    <section class="hero">
-        <h1>Ваши конкуренты уже в навигаторе у клиента. А где вы?</h1>
-        <p class="descriptor">Клиент ищет услуги «рядом» прямо сейчас, но находит не вас. Мы исправим это: разместим и оптимизируем ваш бизнес на Яндекс, Google и 2ГИС за 3 дня.</p>
-        <br>
-        <a href="#audit" class="cta-button">Проверить, видят ли меня клиенты</a>
-    </section>
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <h1>Настраиваем поток клиентов с Яндекс и Google карт для малого бизнеса в Беларуси</h1>
+        <p class="hero-subtitle">
+          Делаем так, чтобы ваш сервис находили на картах и в поиске: карточки в Яндекс Бизнес, Google Maps, 2ГИС, простой сайт‑визитка и работа с отзывами.
+        </p>
+        <div class="hero-actions">
+          <a href="/contact.html" class="btn btn-primary">Получить бесплатный аудит видимости</a>
+          <a href="/cases.html" class="btn btn-secondary">Посмотреть кейсы</a>
+        </div>
+        <p class="hero-note">Агроусадьбы, СТО, салоны красоты, кафе — работаем с локальным бизнесом по всей Беларуси.</p>
+      </div>
+      <div class="hero-image">
+        <img src="/img/hero-maps.png" alt="Пример карточек бизнеса на Яндекс и Google картах" loading="lazy">
+      </div>
+    </div>
+  </section>
 
-    <section class="content">
-        <h2>Почему терять клиентов с карт — это дорого?</h2>
-        <p>По статистике 2025 года, 82% локальных поисковых запросов в Минске заканчиваются звонком или визитом в течение 24 часов. Если вашего СТО, салона или кафе нет на карте — для этих людей вы не существуете.</p>
-        <ul>
-            <li>✅ Мы создадим карточки во всех справочниках.</li>
-            <li>✅ Пройдем верификацию за вас (подтверждение адреса).</li>
-            <li>✅ Настроим привлекательные фото и описание.</li>
-        </ul>
-    </section>
+  <section class="section section-light">
+    <div class="container">
+      <h2>Кому подходит Mapping.by</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Кафе и кофейни</h3>
+          <p>Помогаем привлекать гостей из ближайших домов и офисов, а не только из соцсетей.</p>
+        </div>
+        <div class="card">
+          <h3>СТО и шиномонтаж</h3>
+          <p>Настраиваем так, чтобы вас находили по запросам «рядом со мной» и «СТО в районе».</p>
+        </div>
+        <div class="card">
+          <h3>Салоны и студии</h3>
+          <p>Маникюр, барбершоп, косметология — стабильный поток записей из карт и поиска.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Что мы делаем</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Размещение на картах</h3>
+          <p>Создаём и заполняем карточки в Яндекс Бизнес, Google Maps и 2ГИС: фото, график, услуги, UTM‑метки.</p>
+        </div>
+        <div class="card">
+          <h3>Локальное SEO</h3>
+          <p>Оптимизируем сайт и карточки под геозапросы, чтобы вы были выше конкурентов в районе.</p>
+        </div>
+        <div class="card">
+          <h3>Отзывы и репутация</h3>
+          <p>Запускаем сбор отзывов, готовим шаблоны ответов, помогаем корректно отрабатывать негатив.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-accent">
+    <div class="container cta-inner">
+      <div>
+        <h2>Не знаете, почему вас нет на карте?</h2>
+        <p>Оставьте контакты — сделаем бесплатную проверку видимости и покажем, сколько клиентов вы теряете.</p>
+      </div>
+      <a href="/contact.html" class="btn btn-light">Оставить заявку</a>
+    </div>
+  </section>
 </main>
 
-<footer>
-    <p>&copy; 2026 mapping.by. Локальный маркетинг в Беларуси.</p>
-    <p>Минск, ул. Примерная, 10 | +375 (29) 000-00-00</p>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <div class="footer-logo">
+        <img src="/img/logo-mapping.svg" alt="Mapping.by — логотип" class="logo-img">
+        <span class="logo-text">Mapping.by</span>
+      </div>
+      <p class="footer-text">
+        Агентство локального SEO и карт. Помогаем малому бизнесу в Беларуси быть заметным на Яндекс, Google и 2ГИС.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h3 class="footer-title">Контакты</h3>
+      <p>Минск, Беларусь</p>
+      <p><a href="tel:+375296100703">+375 (29) 610‑07‑03</a></p>
+      <p><a href="mailto:admin@mapping.by">admin@mapping.by</a></p>
+      <p>Telegram: @mapping_by</p>
+    </div>
+    <div class="footer-col">
+      <h3 class="footer-title">Навигация</h3>
+      <a href="/services.html">Услуги</a><br>
+      <a href="/cases.html">Кейсы</a><br>
+      <a href="/blog.html">Блог</a><br>
+      <a href="/contact.html">Оставить заявку</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 Mapping.by. Все права защищены.</p>
+    </div>
+  </div>
 </footer>
 
+<script src="/scripts.js" defer></script>
 </body>
 </html>
