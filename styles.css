@@ -84,20 +84,9 @@ img {
 .logo-img {
   height: 32px;
 }
-
 .logo-text {
   font-weight: 600;
-  /* Удалите text-transform: uppercase; */
 }
-
-.logo-text .red-letter {
-  color: #FF0000;
-  text-transform: uppercase; /* Только красные M и P — uppercase */
-  font-weight: 700; /* Усилить жирность для выделения */
-}
-
-
-
 .main-nav {
   display: flex;
   gap: 16px;
@@ -406,6 +395,7 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
