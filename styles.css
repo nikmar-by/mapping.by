@@ -87,7 +87,13 @@ img {
 
 .logo-text {
   font-weight: 600;
+  text-transform: uppercase; /* Все uppercase */
 }
+
+.logo-text .red-letter {
+  color: #FF0000; /* Только M и P из Ping */
+}
+
 
 .main-nav {
   display: flex;
@@ -397,3 +403,4 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
