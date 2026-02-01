@@ -86,7 +86,7 @@ img {
 }
 .logo-text {
   font-weight: 600;
-  font-size: 22px; 
+  font-size: 21px; 
 }
 .main-nav {
   display: flex;
@@ -396,6 +396,7 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
