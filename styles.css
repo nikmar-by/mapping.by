@@ -84,10 +84,11 @@ img {
 .logo-img {
   height: 32px;
 }
+
 .logo-text {
   font-weight: 600;
-  font-size: 21px; 
 }
+
 .main-nav {
   display: flex;
   gap: 16px;
@@ -378,8 +379,8 @@ textarea {
 /* Responsive */
 
 @media (max-width: 768px) {
- .logo-text {
-    font-size: 18px; /* Меньше на мобильных, как у вашего logo-img */
+  .main-nav {
+    display: none;
   }
 
   .mobile-menu-btn {
@@ -396,9 +397,3 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
-
-
-
-
-
-
