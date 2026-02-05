@@ -37,6 +37,23 @@ img {
 
 /* Layout */
 
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--accent);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 0 0 8px 8px;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 .container {
   width: 100%;
   max-width: 1120px;
@@ -58,6 +75,167 @@ img {
 }
 
 /* Header */
+
+/* Focus states */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-top:hover {
+  opacity: 1;
+}
+
+.back-to-top:active {
+  transform: scale(0.95);
+}
+
+/* Form enhancements */
+.form-feedback {
+  font-size: 12px;
+  margin-top: 4px;
+  min-height: 16px;
+}
+
+.form-feedback.error {
+  color: #dc3545;
+}
+
+.form-feedback.success {
+  color: #28a745;
+}
+
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+  border-color: #dc3545;
+}
+
+.form-group.success input,
+.form-group.success select,
+.form-group.success textarea {
+  border-color: #28a745;
+}
+
+.form-message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  display: none;
+}
+
+.form-message.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Pricing page */
+.pricing-plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.pricing-card {
+  background: var(--bg-light);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.pricing-card h3 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 16px 0;
+  color: var(--accent);
+}
+
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.pricing-card li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.pricing-card li:last-child {
+  border-bottom: none;
+}
+
+.pricing-note {
+  margin-top: 32px;
+  padding: 16px;
+  background: var(--accent-soft);
+  border-radius: 8px;
+}
+
+/* About page */
+.about-content h2 {
+  margin-top: 32px;
+}
+
+.about-content ul {
+  padding-left: 20px;
+}
+
+.about-content li {
+  margin-bottom: 8px;
+}
+
+.form-message.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.submit-spinner {
+  display: none;
+}
+
+.btn.loading .submit-text {
+  visibility: hidden;
+}
+
+.btn.loading .submit-spinner {
+  display: inline;
+}
+
 
 .site-header {
   background: var(--bg-light);

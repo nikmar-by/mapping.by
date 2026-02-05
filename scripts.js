@@ -54,3 +54,87 @@ document.querySelectorAll('.faq-question').forEach(button => {
     }
   });
 });
+
+// Кнопка "Наверх"
+const backToTopButton = document.getElementById('backToTop');
+
+if (backToTopButton) {
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 300) {
+    backToTopButton.style.display = 'block';
+  } else {
+    backToTopButton.style.display = 'none';
+  }
+});
+
+backToTopButton.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+}
+
+// Обработка формы
+const contactForm = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+
+if (contactForm) {
+contactForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Показать состояние загрузки
+  submitBtn.classList.add('loading');
+  submitBtn.disabled = true;
+  
+  // Здесь будет отправка формы через Netlify Forms
+  // После отправки:
+  // 1. Скрыть спиннер
+  // 2. Показать сообщение об успехе или ошибке
+  // 3. Очистить форму при успехе
+  
+  // Эмуляция отправки
+  setTimeout(() => {
+    submitBtn.classList.remove('loading');
+    submitBtn.disabled = false;
+    
+    // Показать сообщение об успехе
+    const formMessage = document.getElementById('formMessage');
+    formMessage.textContent = 'Спасибо! Ваша заявка успешно отправлена.';
+    formMessage.className = 'form-message success';
+    formMessage.style.display = 'block';
+    
+    // Очистить форму
+    contactForm.reset();
+    
+    // Скрыть сообщение через 5 секунд
+    setTimeout(() => {
+      formMessage.style.display = 'none';
+    }, 5000);
+  }, 2000);
+});
+
+// Валидация полей в реальном времени
+const inputs = contactForm.querySelectorAll('input[required], select[required]');
+inputs.forEach(input => {
+  input.addEventListener('blur', validateField);
+});
+}
+
+function validateField(e) {
+const field = e.target;
+const group = field.closest('.form-group');
+const feedback = group.querySelector('.form-feedback');
+
+if (field.value.trim() === '') {
+  group.classList.remove('success');
+  group.classList.add('error');
+  feedback.textContent = 'Это поле обязательно для заполнения';
+  feedback.className = 'form-feedback error';
+} else {
+  group.classList.remove('error');
+  group.classList.add('success');
+  feedback.textContent = '✓';
+  feedback.className = 'form-feedback success';
+}
+}

@@ -21,8 +21,74 @@
   <link rel="canonical" href="https://mapping.by/">
  <link rel="icon" href="/img/favicon_mapping.ico" type="image/x-icon">
   <link rel="stylesheet" href="/styles.css">
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mapping.by",
+    "alternateName": "MapPing.by",
+    "url": "https://mapping.by/",
+    "logo": "https://mapping.by/img/logo-mapping.svg",
+    "description": "Агентство локального SEO и карт. Помогаем малому бизнесу в Беларуси быть заметным на Яндекс, Google и 2ГИС.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "BY",
+      "addressRegion": "Минская область",
+      "addressLocality": "Минск"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+375296100703",
+        "contactType": "customer service",
+        "areaServed": "BY",
+        "availableLanguage": ["Russian", "Belarusian"]
+      }
+    ],
+    "sameAs": [
+      "https://t.me/mapping_by"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Mapping.by",
+    "image": "https://mapping.by/img/logo-mapping.svg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "BY",
+      "addressRegion": "Минская область",
+      "addressLocality": "Минск"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 53.904133,
+      "longitude": 27.557541
+    },
+    "url": "https://mapping.by/",
+    "telephone": "+375296100703",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "priceRange": "$$",
+    "areaServed": {
+      "@type": "City",
+      "name": "Минск"
+    },
+    "serviceType": ["Локальное SEO", "Продвижение на картах", "Яндекс Бизнес", "Google Maps", "2ГИС"],
+    "description": "Настраиваем поток клиентов с Яндекс и Google карт для малого бизнеса в Беларуси"
+  }
+  </script>
 </head>
 <body>
+<a href="#main" class="skip-link">Перейти к основному контенту</a>
 <header class="site-header" id="header">
   <div class="container header-inner">
     <a href="/" class="logo">
@@ -32,17 +98,21 @@
     <nav class="main-nav">
       <a href="/" class="nav-link">Главная</a>
       <a href="/services.html" class="nav-link">Услуги</a>
+      <a href="/pricing.html" class="nav-link">Тарифы</a>
       <a href="/cases.html" class="nav-link">Кейсы</a>
+      <a href="/about.html" class="nav-link">О нас</a>
       <a href="/faq.html" class="nav-link">FAQ</a>
       <a href="/blog.html" class="nav-link">Блог</a>
       <a href="/contact.html" class="nav-link nav-link-primary">Контакты</a>
     </nav>
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню">☰</button>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню" aria-expanded="false">☰</button>
   </div>
   <nav class="mobile-nav" id="mobileMenu">
     <a href="/" class="nav-link">Главная</a>
     <a href="/services.html" class="nav-link">Услуги</a>
+    <a href="/pricing.html" class="nav-link">Тарифы</a>
     <a href="/cases.html" class="nav-link">Кейсы</a>
+    <a href="/about.html" class="nav-link">О нас</a>
     <a href="/faq.html" class="nav-link">FAQ</a>
     <a href="/blog.html" class="nav-link">Блог</a>
     <a href="/contact.html" class="nav-link nav-link-primary">Контакты</a>
@@ -118,6 +188,9 @@
       <a href="/contact.html" class="btn btn-light">Оставить заявку</a>
     </div>
   </section>
+  </section>
+
+  <button id="backToTop" class="back-to-top" title="Наверх" style="display: none;">↑</button>
 </main>
 
 <footer class="site-footer">
@@ -139,8 +212,12 @@
     </div>
     <div class="footer-col">
       <h3 class="footer-title">Навигация</h3>
+      <a href="/">Главная</a><br>
       <a href="/services.html">Услуги</a><br>
+      <a href="/pricing.html">Тарифы</a><br>
       <a href="/cases.html">Кейсы</a><br>
+      <a href="/about.html">О нас</a><br>
+      <a href="/faq.html">FAQ</a><br>
       <a href="/blog.html">Блог</a><br>
       <a href="/contact.html">Оставить заявку</a>
     </div>

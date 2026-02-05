@@ -17,8 +17,39 @@
   <link rel="canonical" href="https://mapping.by/contact.html">
    <link rel="icon" href="/img/favicon_mapping.ico" type="image/x-icon">
   <link rel="stylesheet" href="/styles.css">
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mapping.by",
+    "alternateName": "MapPing.by",
+    "url": "https://mapping.by/",
+    "logo": "https://mapping.by/img/logo-mapping.svg",
+    "description": "Агентство локального SEO и карт. Помогаем малому бизнесу в Беларуси быть заметным на Яндекс, Google и 2ГИС.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "BY",
+      "addressRegion": "Минская область",
+      "addressLocality": "Минск"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+375296100703",
+        "contactType": "customer service",
+        "areaServed": "BY",
+        "availableLanguage": ["Russian", "Belarusian"]
+      }
+    ],
+    "sameAs": [
+      "https://t.me/mapping_by"
+    ]
+  }
+  </script>
 </head>
 <body>
+<a href="#main" class="skip-link">Перейти к основному контенту</a>
 <header class="site-header" id="header">
   <div class="container header-inner">
     <a href="/" class="logo">
@@ -28,17 +59,21 @@
     <nav class="main-nav">
       <a href="/" class="nav-link">Главная</a>
       <a href="/services.html" class="nav-link">Услуги</a>
+      <a href="/pricing.html" class="nav-link">Тарифы</a>
       <a href="/cases.html" class="nav-link">Кейсы</a>
+      <a href="/about.html" class="nav-link">О нас</a>
       <a href="/faq.html" class="nav-link">FAQ</a>
       <a href="/blog.html" class="nav-link">Блог</a>
       <a href="/contact.html" class="nav-link nav-link-primary">Контакты</a>
     </nav>
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню">☰</button>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню" aria-expanded="false">☰</button>
   </div>
   <nav class="mobile-nav" id="mobileMenu">
     <a href="/" class="nav-link">Главная</a>
     <a href="/services.html" class="nav-link">Услуги</a>
+    <a href="/pricing.html" class="nav-link">Тарифы</a>
     <a href="/cases.html" class="nav-link">Кейсы</a>
+    <a href="/about.html" class="nav-link">О нас</a>
     <a href="/faq.html" class="nav-link">FAQ</a>
     <a href="/blog.html" class="nav-link">Блог</a>
     <a href="/contact.html" class="nav-link nav-link-primary">Контакты</a>
@@ -59,16 +94,21 @@
       </div>
 
       <div>
-        <form name="contact" method="POST" data-netlify="true" class="contact-form">
+        <form name="contact" method="POST" data-netlify="true" class="contact-form" id="contactForm">
           <input type="hidden" name="form-name" value="contact">
+          
           <div class="form-group">
             <label for="name">Имя</label>
             <input id="name" name="name" type="text" required placeholder="Как к вам обращаться?">
+            <div class="form-feedback" aria-live="polite"></div>
           </div>
+          
           <div class="form-group">
             <label for="phone">Телефон или Telegram</label>
             <input id="phone" name="phone" type="text" required placeholder="+375… или @username">
+            <div class="form-feedback" aria-live="polite"></div>
           </div>
+          
           <div class="form-group">
             <label for="business-type">Сфера бизнеса</label>
             <select id="business-type" name="business-type" required>
@@ -79,7 +119,9 @@
               <option value="farm">Агроусадьба</option>
               <option value="other">Другое</option>
             </select>
+            <div class="form-feedback" aria-live="polite"></div>
           </div>
+          
           <div class="form-group">
             <label for="maps-status">Есть ли вы на картах?</label>
             <select id="maps-status" name="maps-status" required>
@@ -89,17 +131,28 @@
               <option value="google-only">Только в Google</option>
               <option value="no">Нет / Не знаю</option>
             </select>
+            <div class="form-feedback" aria-live="polite"></div>
           </div>
+          
           <div class="form-group">
             <label for="message">Кратко опишите задачу</label>
             <textarea id="message" name="message" rows="4" placeholder="Например: «хочу больше заказов с карт, сейчас нас не видно по запросу кафе в районе…»"></textarea>
+            <div class="form-feedback" aria-live="polite"></div>
           </div>
-          <button type="submit" class="btn btn-primary">Отправить заявку</button>
+          
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            <span class="submit-text">Отправить заявку</span>
+            <span class="submit-spinner">⏳</span>
+          </button>
+          
+          <div id="formMessage" class="form-message" aria-live="polite"></div>
           <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
         </form>
       </div>
     </div>
   </section>
+
+  <button id="backToTop" class="back-to-top" title="Наверх" style="display: none;">↑</button>
 </main>
 
 <footer class="site-footer">
@@ -121,8 +174,12 @@
     </div>
     <div class="footer-col">
       <h3 class="footer-title">Навигация</h3>
+      <a href="/">Главная</a><br>
       <a href="/services.html">Услуги</a><br>
+      <a href="/pricing.html">Тарифы</a><br>
       <a href="/cases.html">Кейсы</a><br>
+      <a href="/about.html">О нас</a><br>
+      <a href="/faq.html">FAQ</a><br>
       <a href="/blog.html">Блог</a><br>
       <a href="/contact.html">Оставить заявку</a>
     </div>
