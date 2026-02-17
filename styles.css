@@ -531,31 +531,29 @@ textarea {
   color: #e5e7eb;
   margin-top: 40px;
   padding-top: 0;
+  /* ВАЖНО: Страхуемся от горизонтальной прокрутки */
+  overflow-x: hidden; 
 }
 
-/* 1. Основная сетка футера (Desktop) - Компактная */
+/* 1. Основная сетка футера (Desktop) */
 .footer-inner {
   display: grid;
-  /* 
-     1-я: auto (логотип)
-     2-я: 1fr (половина остатка)
-     3-я: 1fr (вторая половина остатка)
-     4-я: max-content (ширина по тексту)
-  */
+  /* Сетка: Лого(auto) 1fr 1fr Навигация(max-content) */
   grid-template-columns: auto 1fr 1fr max-content;
   gap: 24px;
-  /* ВАЖНО: Убрали padding-bottom, чтобы подтянуть копирайт */
+  /* Компактный padding: снизу всего 8px */
   padding: 32px 16px 8px; 
   align-items: start;
 }
 
-/* Запрет переноса строк */
+/* Запрет переноса строк для Контактов и Навигации */
 .footer-inner > .footer-col:nth-child(3) p,
 .footer-inner > .footer-col:nth-child(3) a,
 .footer-inner > .footer-col:last-child a {
   white-space: nowrap;
 }
 
+/* Класс-хелпер для запрета переноса */
 .no-wrap {
   white-space: nowrap !important;
 }
@@ -603,6 +601,7 @@ textarea {
   color: #fff;
 }
 
+/* Ссылки внутри текста (Контакты) */
 .footer-col p a {
   display: inline; 
 }
@@ -616,11 +615,11 @@ textarea {
 /* Нижняя полоса с копирайтом - СУПЕР КОМПАКТНАЯ */
 .footer-bottom {
   border-top: 1px solid #1f2937;
-  padding: 12px 0; /* Минимальные отступы внутри */
+  padding: 12px 0;
   font-size: 12px;
   color: #6b7280;
   text-align: center;
-  margin-top: 0; /* ВАЖНО: Убрали внешний отступ, приклеили к колонкам */
+  margin-top: 0; /* Приклеили к колонкам */
 }
 
 .footer-bottom p {
@@ -665,21 +664,22 @@ textarea {
     display: flex;
     flex-direction: column;
     padding-top: 0;
-    padding-bottom: 16px; /* Чуть больше места перед копирайтом на мобильных */
+    padding-bottom: 16px;
   }
 
-  /* Full Bleed Логотип */
+  /* Full Bleed Логотип - ИСПРАВЛЕННЫЙ */
   .footer-logo-img {
-    width: 100vw;
-    max-width: none;
+    width: 100vw;       /* Пробуем 100vw */
+    max-width: 100%;    /* Но не больше 100% контейнера */
     height: auto;
     margin: 0;
   }
-
+  
+  /* Если контейнер .container выше имеет ширину 100%, то 100vw может быть лишним. 
+     Самый безопасный вариант для Full Bleed без прокрутки: */
   .footer-logo {
-    padding: 0;
-    margin-bottom: 24px;
-    display: block;
     width: 100%;
+    margin: 0 0 24px 0;
+    padding: 0;
   }
 }
