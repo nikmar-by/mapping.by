@@ -571,7 +571,7 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  /* Адаптация логотипа для планшетов */
+  /* Логотип на планшетах */
   .footer-logo-img {
     max-width: 140px;
   }
@@ -585,8 +585,28 @@ textarea {
   height: auto;
 }
 
+/* Смартфоны */
+@media (max-width: 480px) {
+  /* Растягиваем логотип на всю ширину экрана (Full Bleed) */
+  .footer-logo-img {
+    width: 100vw;           /* Ширина = ширине окна браузера */
+    max-width: none;        /* Убираем ограничение по ширине */
+    margin-left: calc(50% - 50vw); /* Центрируем и растягиваем влево */
+    margin-right: calc(50% - 50vw); /* Растягиваем вправо */
+    height: auto;
+  }
+  
+  /* Убираем отступы у родителя логотипа, если они есть */
+  .footer-logo {
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  /* Настраиваем контейнер футера */
   .footer-inner {
     grid-template-columns: 1fr;
+    overflow-x: hidden; /* Скрываем возможную горизонтальную прокрутку */
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
-
