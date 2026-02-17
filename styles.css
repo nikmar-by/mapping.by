@@ -585,13 +585,8 @@ textarea {
   height: auto;
 }
 
-/* Смартфоны */
-@media (max-width: 480px) {
-  .footer-logo-img {
-    max-width: 110px;
-  }
-
   .footer-inner {
     grid-template-columns: 1fr;
   }
 }
+
