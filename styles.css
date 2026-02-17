@@ -570,15 +570,28 @@ textarea {
   .contact-grid {
     grid-template-columns: 1fr;
   }
-.footer-logo svg {
+
+  /* Адаптация логотипа для планшетов */
+  .footer-logo-img {
+    max-width: 140px;
+  }
+}
+
+/* Адаптивный SVG-логотип в футере (общие стили) */
+.footer-logo-img {
+  display: block;
   width: 100%;
-  max-width: 200px;
+  max-width: 180px;
   height: auto;
 }
+
+/* Смартфоны */
+@media (max-width: 480px) {
+  .footer-logo-img {
+    max-width: 110px;
+  }
 
   .footer-inner {
     grid-template-columns: 1fr;
   }
 }
-
-
