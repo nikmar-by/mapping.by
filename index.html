@@ -198,44 +198,55 @@
 </main>
 
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-col">
-      <div class="footer-logo">
-        <span class="logo-text">MapPing.by</span>
+  <!-- Ограничивающий контейнер -->
+  <div class="container"> 
+    <!-- Сетка внутри контейнера -->
+    <div class="footer-inner">
+      <!-- 1. Логотип -->
+      <div class="footer-col">
+        <div class="footer-logo">
+          <img src="/img/mapping_1+1.svg" alt="Логотип MapPing.by" loading="lazy" class="footer-logo-img">
+        </div>
       </div>
-      <p class="footer-text">
-        Агентство локального SEO и карт. Помогаем малому бизнесу в Беларуси быть заметным на Яндекс, Google и 2ГИС.
-      </p>
-    </div>
-    <div class="footer-col">
-      <h3 class="footer-title">Контакты</h3>
-      <p>Минск, Беларусь</p>
-      <p><a href="tel:+375296100703">+375 (29) 610‑07‑03</a></p>
-      <p><a href="mailto:admin@mapping.by">admin@mapping.by</a></p>
-      <p>Telegram: @mapping_by</p>
-    </div>
-    <div class="footer-col">
-      <h3 class="footer-title">Навигация</h3>
-      <a href="/">Главная</a><br>
-      <a href="/services.html">Услуги</a><br>
-      <a href="/pricing.html">Тарифы</a><br>
-      <a href="/cases.html">Кейсы</a><br>
-      <a href="/about.html">О нас</a><br>
-      <a href="/faq.html">FAQ</a><br>
-      <a href="/blog.html">Блог</a><br>
-      <a href="/contact.html">Оставить заявку</a>
+
+      <!-- 2. Описание -->
+      <div class="footer-col">
+        <h3 class="footer-title">О компании</h3>
+        <p class="footer-text">
+          MapPing.by — делаем так, чтобы вас находили. Размещение на Яндекс, Google и 2ГИС картах, быстрые сайты-визитки для местного и туристического бизнеса в Беларуси.
+        </p>
+      </div>
+
+      <!-- 3. Контакты -->
+      <div class="footer-col contact-col"> <!-- Добавил класс contact-col для точности -->
+        <h3 class="footer-title">Контакты</h3>
+        <p>Минск, Беларусь</p>
+        <p>Tel: <a href="tel:+375296100703" class="no-wrap">+375 (29) 610‑07‑03</a></p>
+        <p>Email: <a href="mailto:admin@mapping.by">admin@mapping.by</a></p>
+        <p>Telegram: <a href="https://t.me/mapping_by?direct" target="_blank" rel="noopener">@mapping_by</a></p>
+      </div>
+
+      <!-- 4. Навигация -->
+      <div class="footer-col">
+        <h3 class="footer-title">Навигация</h3>
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <a href="/">Главная</a>
+          <a href="/services.html">Услуги</a>
+          <a href="/pricing.html">Тарифы</a>
+          <a href="/cases.html">Кейсы</a>
+          <a href="/contact.html">Оставить заявку</a>
+        </div>
+      </div>
     </div>
   </div>
+
   <div class="footer-bottom">
     <div class="container">
-      <p>© 2026 Mapping.by. Все права защищены.</p>
+      <p>© 2026 MapPing.by. Все права защищены.</p>
     </div>
   </div>
 </footer>
-
 <script src="/scripts.js" defer></script>
 </body>
+
 </html>
-
-
-
