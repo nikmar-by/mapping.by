@@ -526,36 +526,92 @@ textarea {
 
 /* Footer */
 
+/* Footer */
+
 .site-footer {
   background: #0f172a;
   color: #e5e7eb;
   margin-top: 40px;
 }
 
+/* Основная сетка футера (Desktop: 4 колонки) */
 .footer-inner {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  /* Лого(1) Описание(1.5) Контакты(1) Навигация(0.8) */
+  grid-template-columns: 1fr 1.5fr 1fr 0.8fr;
   gap: 32px;
-  padding: 32px 16px;
+  padding: 48px 16px;
+  align-items: start;
+}
+
+.footer-col {
+  min-width: 0;
+}
+
+.footer-logo {
+  margin-bottom: 16px;
+}
+
+/* Логотип по умолчанию (Desktop) */
+.footer-logo-img {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: auto;
 }
 
 .footer-title {
-  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #fff;
 }
 
 .footer-text {
+  line-height: 1.6;
+  margin: 0;
   color: #9ca3af;
   font-size: 14px;
 }
 
-.footer-bottom {
-  border-top: 1px solid #1f2937;
-  padding: 12px 0;
-  font-size: 13px;
+/* Ссылки в футере */
+.footer-col a {
+  display: block;
+  margin-bottom: 8px;
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-/* Responsive */
+.footer-col a:hover {
+  color: #fff;
+}
 
+/* Контакты */
+.footer-col p {
+  margin: 0 0 12px;
+  color: #9ca3af;
+}
+
+.footer-bottom {
+  border-top: 1px solid #1f2937;
+  padding: 24px 0;
+  font-size: 13px;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* --- Responsive (Адаптивность) --- */
+
+/* Планшеты (до 992px) - перестраиваем в 2 колонки */
+@media (max-width: 992px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 24px;
+  }
+}
+
+/* Планшеты и мобильные (до 768px) - общие стили адаптации */
 @media (max-width: 768px) {
   .main-nav {
     display: none;
@@ -571,42 +627,34 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  /* Логотип на планшетах */
+  /* Уменьшаем логотип на планшетах */
   .footer-logo-img {
     max-width: 140px;
   }
 }
 
-/* Адаптивный SVG-логотип в футере (общие стили) */
-.footer-logo-img {
-  display: block;
-  width: 100%;
-  max-width: 180px;
-  height: auto;
-}
-
-/* Смартфоны */
+/* Смартфоны (до 480px) - одна колонка и лого во всю ширину */
 @media (max-width: 480px) {
-  /* Растягиваем логотип на всю ширину экрана (Full Bleed) */
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+    overflow-x: hidden; /* Скрываем горизонт. прокрутку от логотипа */
+  }
+
+  /* Full Bleed эффект для логотипа */
   .footer-logo-img {
-    width: 100vw;           /* Ширина = ширине окна браузера */
-    max-width: none;        /* Убираем ограничение по ширине */
-    margin-left: calc(50% - 50vw); /* Центрируем и растягиваем влево */
-    margin-right: calc(50% - 50vw); /* Растягиваем вправо */
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
     height: auto;
   }
-  
-  /* Убираем отступы у родителя логотипа, если они есть */
+
   .footer-logo {
     margin-bottom: 24px;
     display: block;
-  }
-
-  /* Настраиваем контейнер футера */
-  .footer-inner {
-    grid-template-columns: 1fr;
-    overflow-x: hidden; /* Скрываем возможную горизонтальную прокрутку */
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 0;
   }
 }
