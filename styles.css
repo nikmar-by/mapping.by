@@ -530,26 +530,35 @@ textarea {
   background: #0f172a;
   color: #e5e7eb;
   margin-top: 40px;
+  padding-top: 48px; /* Отступ сверху перенес сюда */
 }
 
-/* 1. Основная сетка футера (Desktop) */
+/* Сетка футера */
 .footer-inner {
   display: grid;
   /* 
-     1-я: auto (логотип)
-     2-я: 1fr (половина остатка)
-     3-я: 1fr (вторая половина остатка)
-     4-я: max-content (ширина по тексту)
+     1. auto - ширина логотипа
+     2. 1.5fr - Описание берет больше места
+     3. 1fr - Контакты берут чуть меньше
+     4. max-content - Навигация по ширине текста
   */
-  grid-template-columns: auto 1fr 1fr max-content;
+  grid-template-columns: auto 1.5fr 1fr max-content; 
   gap: 32px;
-  padding: 48px 16px;
+  /* padding удалил, так как он теперь у .site-footer или .container */
   align-items: start;
 }
 
-/* 2. Запрет переноса строк для контактов (3-я колонка) и навигации (4-я) */
-.footer-inner > .footer-col:nth-child(3) p,
-.footer-inner > .footer-col:nth-child(3) a,
+/* Убираем отступы у контейнера внутри футера, если они мешают Full Bleed */
+.site-footer .container {
+    /* Если нужно, можно добавить стили */
+}
+
+/* Запрет переноса для телефонов (класс .no-wrap в HTML) */
+.no-wrap {
+  white-space: nowrap !important;
+}
+
+/* Запрет переноса для навигации */
 .footer-inner > .footer-col:last-child a {
   white-space: nowrap;
 }
@@ -562,7 +571,6 @@ textarea {
   margin-bottom: 16px;
 }
 
-/* Логотип по умолчанию (Desktop) */
 .footer-logo-img {
   display: block;
   width: 100%;
@@ -584,9 +592,8 @@ textarea {
   font-size: 14px;
 }
 
-/* Ссылки в футере */
 .footer-col a {
-  display: block;
+  display: block; /* Важно для ссылок в столбик */
   margin-bottom: 8px;
   color: #9ca3af;
   text-decoration: none;
@@ -597,7 +604,12 @@ textarea {
   color: #fff;
 }
 
-/* Контакты */
+/* Специфично для контактов (inline ссылки внутри P) */
+.contact-col p a,
+.footer-col p a {
+    display: inline; /* Возвращаем inline для ссылок внутри текста */
+}
+
 .footer-col p {
   margin: 0 0 12px;
   color: #9ca3af;
@@ -609,62 +621,58 @@ textarea {
   font-size: 13px;
   color: #6b7280;
   text-align: center;
+  margin-top: 48px;
 }
 
-/* --- Responsive (Адаптивность) --- */
+/* --- Responsive --- */
 
-/* Планшеты (до 992px) - перестраиваем в 2 колонки */
 @media (max-width: 992px) {
   .footer-inner {
-    grid-template-columns: 1fr 1fr; /* 2 равные колонки */
+    grid-template-columns: 1fr 1fr; /* 2 колонки */
     gap: 40px 24px;
   }
 }
 
-/* Планшеты и мобильные (до 768px) - общие стили адаптации */
 @media (max-width: 768px) {
-  .main-nav {
-    display: none;
-  }
-
-  .mobile-menu-btn {
-    display: block;
-  }
-
-  .hero-inner,
-  .case-card,
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* Уменьшаем логотип на планшетах */
-  .footer-logo-img {
-    max-width: 140px;
-  }
+  .main-nav { display: none; }
+  .mobile-menu-btn { display: block; }
+  .hero-inner, .case-card, .contact-grid { grid-template-columns: 1fr; }
+  .footer-logo-img { max-width: 140px; }
 }
 
-/* Смартфоны (до 480px) - одна колонка и лого во всю ширину */
 @media (max-width: 480px) {
-  .footer-inner {
-    grid-template-columns: 1fr; /* 1 колонка */
-    gap: 32px;
-    padding-left: 16px;
-    padding-right: 16px;
-    overflow-x: hidden;
+  /* Важно: на мобильных отключаем padding у контейнера для Full Bleed логотипа */
+  .site-footer .container {
+      padding-left: 0;
+      padding-right: 0;
+  }
+  
+  /* Возвращаем padding для контента внутри колонок, КРОМЕ логотипа */
+  .footer-col:not(:first-child) {
+      padding-left: 16px;
+      padding-right: 16px;
   }
 
-  /* Full Bleed эффект для логотипа */
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Full Bleed Логотип */
   .footer-logo-img {
     width: 100vw;
     max-width: none;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
     height: auto;
+    /* Убираем margin, так как мы сняли padding с контейнера */
+    margin: 0; 
   }
-
+  
   .footer-logo {
-    margin-bottom: 24px;
-    display: block;
-    padding: 0;
+      padding: 0;
+      margin-bottom: 24px;
+      display: block;
+      width: 100%;
   }
 }
