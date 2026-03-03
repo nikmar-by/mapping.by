@@ -37,7 +37,6 @@ img {
 
 /* Layout */
 
-/* Skip link */
 .skip-link {
   position: absolute;
   top: -40px;
@@ -74,8 +73,6 @@ img {
   color: #fff;
 }
 
-/* Header */
-
 /* Focus states */
 a:focus-visible,
 button:focus-visible,
@@ -87,7 +84,12 @@ textarea:focus-visible {
   border-radius: 4px;
 }
 
-/* Back to top button */
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Back to top */
 .back-to-top {
   position: fixed;
   bottom: 20px;
@@ -112,120 +114,58 @@ textarea:focus-visible {
   transform: scale(0.95);
 }
 
-/* Form enhancements */
-.form-feedback {
-  font-size: 12px;
-  margin-top: 4px;
-  min-height: 16px;
+/* Typography */
+
+h1 {
+  font-size: 32px;
+  margin: 0 0 16px;
 }
 
-.form-feedback.error {
-  color: #dc3545;
-}
-
-.form-feedback.success {
-  color: #28a745;
-}
-
-.form-group.error input,
-.form-group.error select,
-.form-group.error textarea {
-  border-color: #dc3545;
-}
-
-.form-group.success input,
-.form-group.success select,
-.form-group.success textarea {
-  border-color: #28a745;
-}
-
-.form-message {
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 8px;
-  display: none;
-}
-
-.form-message.success {
-  background: #d4edda;
-  color: #155724;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Pricing page */
-.pricing-plans {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  margin-top: 32px;
-}
-
-.pricing-card {
-  background: var(--bg-light);
-  border-radius: 12px;
-  padding: 24px;
-  border: 1px solid var(--border);
-  text-align: center;
-}
-
-.pricing-card h3 {
-  margin-top: 0;
-  font-size: 20px;
-}
-
-.price {
+h2 {
   font-size: 24px;
-  font-weight: bold;
-  margin: 16px 0;
+  margin: 0 0 16px;
+}
+
+h3 {
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+
+.page-intro {
+  color: var(--text-muted);
+  max-width: 640px;
+}
+
+/* Buttons */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-secondary {
+  background: var(--accent-soft);
   color: var(--accent);
 }
 
-.pricing-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-}
-
-.pricing-card li {
-  padding: 8px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.pricing-card li:last-child {
-  border-bottom: none;
-}
-
-.pricing-note {
-  margin-top: 32px;
-  padding: 16px;
-  background: var(--accent-soft);
-  border-radius: 8px;
-}
-
-/* About page */
-.about-content h2 {
-  margin-top: 32px;
-}
-
-.about-content ul {
-  padding-left: 20px;
-}
-
-.about-content li {
-  margin-bottom: 8px;
-}
-
-.form-message.error {
-  background: #f8d7da;
-  color: #721c24;
-}
-
-.submit-spinner {
-  display: none;
+.btn-light {
+  background: #fff;
+  color: var(--accent);
 }
 
 .btn.loading .submit-text {
@@ -236,6 +176,11 @@ html {
   display: inline;
 }
 
+.submit-spinner {
+  display: none;
+}
+
+/* Header */
 
 .site-header {
   background: var(--bg-light);
@@ -274,6 +219,11 @@ html {
   align-items: center;
 }
 
+/* Вариант Б: nav занимает 2 ячейки grid */
+.main-nav--wide {
+  grid-column: span 2;
+}
+
 .nav-link {
   color: var(--text-muted);
   font-size: 14px;
@@ -295,6 +245,12 @@ html {
   background: #1d4ed8;
 }
 
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 /* Mobile nav */
 
 .mobile-menu-btn {
@@ -302,6 +258,7 @@ html {
   background: none;
   border: none;
   font-size: 22px;
+  cursor: pointer;
 }
 
 .mobile-nav {
@@ -346,28 +303,6 @@ html {
   color: var(--text-muted);
 }
 
-/* Typography */
-
-h1 {
-  font-size: 32px;
-  margin: 0 0 16px;
-}
-
-h2 {
-  font-size: 24px;
-  margin: 0 0 16px;
-}
-
-h3 {
-  font-size: 18px;
-  margin: 0 0 8px;
-}
-
-.page-intro {
-  color: var(--text-muted);
-  max-width: 640px;
-}
-
 /* Cards, grid */
 
 .grid-3 {
@@ -382,38 +317,6 @@ h3 {
   border-radius: 12px;
   padding: 20px;
   border: 1px solid var(--border);
-}
-
-/* Buttons */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 18px;
-  border-radius: 999px;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: #fff;
-}
-
-.btn-primary:hover {
-  background: #1d4ed8;
-}
-
-.btn-secondary {
-  background: var(--accent-soft);
-  color: var(--accent);
-}
-
-.btn-light {
-  background: #fff;
-  color: var(--accent);
 }
 
 /* CTA */
@@ -525,6 +428,116 @@ textarea {
   color: var(--text-muted);
 }
 
+/* Form enhancements */
+
+.form-feedback {
+  font-size: 12px;
+  margin-top: 4px;
+  min-height: 16px;
+}
+
+.form-feedback.error {
+  color: #dc3545;
+}
+
+.form-feedback.success {
+  color: #28a745;
+}
+
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+  border-color: #dc3545;
+}
+
+.form-group.success input,
+.form-group.success select,
+.form-group.success textarea {
+  border-color: #28a745;
+}
+
+.form-message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  display: none;
+}
+
+.form-message.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.form-message.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Pricing */
+
+.pricing-plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.pricing-card {
+  background: var(--bg-light);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.pricing-card h3 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 16px 0;
+  color: var(--accent);
+}
+
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.pricing-card li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.pricing-card li:last-child {
+  border-bottom: none;
+}
+
+.pricing-note {
+  margin-top: 32px;
+  padding: 16px;
+  background: var(--accent-soft);
+  border-radius: 8px;
+}
+
+/* About */
+
+.about-content h2 {
+  margin-top: 32px;
+}
+
+.about-content ul {
+  padding-left: 20px;
+}
+
+.about-content li {
+  margin-bottom: 8px;
+}
+
 /* Footer */
 
 .site-footer {
@@ -532,31 +545,15 @@ textarea {
   color: #e5e7eb;
   margin-top: 40px;
   padding-top: 0;
-  /* ВАЖНО: Страхуемся от горизонтальной прокрутки */
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
-/* 1. Основная сетка футера (Desktop) */
 .footer-inner {
   display: grid;
-  /* Сетка: Лого(auto) 1fr 1fr Навигация(max-content) */
   grid-template-columns: auto 1fr 1fr max-content;
   gap: 24px;
-  /* Компактный padding: снизу всего 8px */
-  padding: 32px 16px 8px; 
+  padding: 32px 16px 8px;
   align-items: start;
-}
-
-/* Запрет переноса строк для Контактов и Навигации */
-.footer-inner > .footer-col:nth-child(3) p,
-.footer-inner > .footer-col:nth-child(3) a,
-.footer-inner > .footer-col:last-child a {
-  white-space: nowrap;
-}
-
-/* Класс-хелпер для запрета переноса */
-.no-wrap {
-  white-space: nowrap !important;
 }
 
 .footer-col {
@@ -588,7 +585,6 @@ textarea {
   font-size: 13px;
 }
 
-/* Ссылки */
 .footer-col a {
   display: block;
   margin-bottom: 6px;
@@ -602,9 +598,8 @@ textarea {
   color: #fff;
 }
 
-/* Ссылки внутри текста (Контакты) */
 .footer-col p a {
-  display: inline; 
+  display: inline;
 }
 
 .footer-col p {
@@ -613,21 +608,32 @@ textarea {
   font-size: 14px;
 }
 
-/* Нижняя полоса с копирайтом - СУПЕР КОМПАКТНАЯ */
+.footer-inner > .footer-col:nth-child(3) p,
+.footer-inner > .footer-col:nth-child(3) a,
+.footer-inner > .footer-col:last-child a {
+  white-space: nowrap;
+}
+
+.no-wrap {
+  white-space: nowrap !important;
+}
+
 .footer-bottom {
   border-top: 1px solid #1f2937;
   padding: 12px 0;
   font-size: 12px;
   color: #6b7280;
   text-align: center;
-  margin-top: 0; /* Приклеили к колонкам */
+  margin-top: 0;
 }
 
 .footer-bottom p {
   margin: 0;
 }
 
-/* --- Responsive (Адаптивность) --- */
+/* ================================
+   Responsive
+   ================================ */
 
 /* Планшеты (до 992px) */
 @media (max-width: 992px) {
@@ -637,53 +643,61 @@ textarea {
   }
 }
 
-/* Мобильные и планшеты (до 768px) */
+/* Мобильные (до 768px) */
 @media (max-width: 768px) {
-  .main-nav { display: none; }
-  .mobile-menu-btn { display: block; }
-  .hero-inner, .case-card, .contact-grid { grid-template-columns: 1fr; }
-  .footer-logo-img { max-width: 130px; }
+  .main-nav {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .header-inner {
+    grid-template-columns: 1fr auto;
+  }
+
+  .hero-inner,
+  .case-card,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-logo-img {
+    max-width: 130px;
+  }
 }
 
 /* Смартфоны (до 480px) */
 @media (max-width: 480px) {
-  /* Убираем padding у контейнера для Full Bleed логотипа */
   .site-footer .container {
-      padding-left: 0;
-      padding-right: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  /* Возвращаем padding колонкам с текстом */
   .footer-col:not(:first-child) {
-      padding-left: 16px;
-      padding-right: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .footer-inner {
-    grid-template-columns: 1fr;
-    gap: 24px;
     display: flex;
     flex-direction: column;
+    gap: 24px;
     padding-top: 0;
     padding-bottom: 16px;
   }
 
-  /* Full Bleed Логотип - ИСПРАВЛЕННЫЙ */
-  .footer-logo-img {
-    width: 100vw;       /* Пробуем 100vw */
-    max-width: 100%;    /* Но не больше 100% контейнера */
-    height: auto;
-    margin: 0;
-  }
-  
-  /* Если контейнер .container выше имеет ширину 100%, то 100vw может быть лишним. 
-     Самый безопасный вариант для Full Bleed без прокрутки: */
   .footer-logo {
     width: 100%;
     margin: 0 0 24px 0;
     padding: 0;
   }
+
+  .footer-logo-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+  }
 }
-
-
-
