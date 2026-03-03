@@ -599,7 +599,7 @@ textarea {
 .footer-nav-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px 16px;
+  gap: 2px 40px;
 }
 
 .footer-bottom {
@@ -689,3 +689,4 @@ textarea {
     margin: 0;
   }
 }
+
