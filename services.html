@@ -23,34 +23,9 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+<a href="#main" class="skip-link">Перейти к основному контенту</a>
 <header class="site-header" id="header">
-  <div class="container header-inner">
-    <a href="/" class="logo">
-      <img src="/img/logo-mapping.svg" alt="Логотип агентства Mapping.by" class="logo-img">
-      <span class="logo-text">MapPing.by</span>
-    </a>
-    <nav class="main-nav">
-      <a href="/" class="nav-link">Главная</a>
-      <a href="/services.html" class="nav-link">Услуги</a>
-      <a href="/pricing.html" class="nav-link">Тарифы</a>
-      <a href="/cases.html" class="nav-link">Кейсы</a>
-      <a href="/about.html" class="nav-link">О нас</a>
-      <a href="/faq.html" class="nav-link">FAQ</a>
-      <a href="/blog.html" class="nav-link">Блог</a>
-      <a href="/contact.html" class="nav-link nav-link-primary">Контакты</a>
-    </nav>
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню">☰</button>
-  </div>
-  <nav class="mobile-nav" id="mobileMenu">
-    <a href="/" class="nav-link">Главная</a>
-    <a href="/services.html" class="nav-link">Услуги</a>
-    <a href="/pricing.html" class="nav-link">Тарифы</a>
-    <a href="/cases.html" class="nav-link">Кейсы</a>
-    <a href="/about.html" class="nav-link">О нас</a>
-    <a href="/faq.html" class="nav-link">FAQ</a>
-    <a href="/blog.html" class="nav-link">Блог</a>
-    <a href="/contact.html" class="nav-link nav-link-primary">Контакты</a>
-  </nav>
+  <!-- Компонент header будет загружен здесь -->
 </header>
 
 <main>
@@ -88,54 +63,8 @@
   </section>
 </main>
 
-<footer class="site-footer">
-  <!-- Ограничивающий контейнер -->
-  <div class="container"> 
-    <!-- Сетка внутри контейнера -->
-    <div class="footer-inner">
-      <!-- 1. Логотип -->
-      <div class="footer-col">
-        <div class="footer-logo">
-          <img src="/img/mapping_1+1.svg" alt="Логотип MapPing.by" loading="lazy" class="footer-logo-img">
-        </div>
-      </div>
-
-      <!-- 2. Описание -->
-      <div class="footer-col">
-        <h3 class="footer-title">О компании</h3>
-        <p class="footer-text">
-          MapPing.by — делаем так, чтобы вас находили. Размещение на Яндекс, Google и 2ГИС картах, быстрые сайты-визитки для местного и туристического бизнеса в Беларуси.
-        </p>
-      </div>
-
-      <!-- 3. Контакты -->
-      <div class="footer-col contact-col"> <!-- Добавил класс contact-col для точности -->
-        <h3 class="footer-title">Контакты</h3>
-        <p>Минск, Беларусь</p>
-        <p>Tel: <a href="tel:+375296100703" class="no-wrap">+375 (29) 610‑07‑03</a></p>
-        <p>Email: <a href="mailto:admin@mapping.by">admin@mapping.by</a></p>
-        <p>Telegram: <a href="https://t.me/mapping_by?direct" target="_blank" rel="noopener">@mapping_by</a></p>
-      </div>
-
-      <!-- 4. Навигация -->
-      <div class="footer-col">
-        <h3 class="footer-title">Навигация</h3>
-        <div style="display: flex; flex-direction: column; gap: 2px;">
-          <a href="/">Главная</a>
-          <a href="/services.html">Услуги</a>
-          <a href="/pricing.html">Тарифы</a>
-          <a href="/cases.html">Кейсы</a>
-          <a href="/contact.html">Оставить заявку</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <div class="container">
-      <p>© 2026 MapPing.by. Все права защищены.</p>
-    </div>
-  </div>
+<footer class="site-footer" id="footer">
+  <!-- Компонент footer будет загружен здесь -->
 </footer>
 <script src="/scripts.js" defer></script>
 </body>

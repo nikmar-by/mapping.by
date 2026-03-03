@@ -158,3 +158,81 @@ if (fastTgLink) {
   });
 }
 
+// ==========================================
+// Загрузка компонентов Header и Footer
+// ==========================================
+
+// Функция для загрузки компонента
+async function loadComponent(elementId, componentPath) {
+  try {
+    const response = await fetch(componentPath);
+    if (!response.ok) {
+      throw new Error(`Ошибка загрузки компонента: ${response.status} ${response.statusText}`);
+    }
+    const componentHTML = await response.text();
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.innerHTML = componentHTML;
+      
+      // Вызов дополнительных функций после загрузки компонента
+      if (elementId === 'header') {
+        initHeaderScripts();
+      } else if (elementId === 'footer') {
+        initFooterScripts();
+      }
+    }
+  } catch (error) {
+    console.error('Ошибка при загрузке компонента:', error);
+  }
+}
+
+// Инициализация скриптов для хедера
+function initHeaderScripts() {
+  // Mobile menu
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      mobileMenu.style.display = mobileMenu.classList.contains('active') ? 'flex' : 'none';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        mobileMenu.style.display = 'none';
+      });
+    });
+  }
+
+  // Активный пункт меню по текущему URL
+  document.querySelectorAll('.main-nav .nav-link, .mobile-nav .nav-link').forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add('active');
+    }
+  });
+  
+  // Повторная инициализация sticky header после загрузки компонента
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if (!header) return;
+    if (window.scrollY > 10) {
+      header.style.boxShadow = '0 2px 10px rgba(15,23,42,0.08)';
+    } else {
+      header.style.boxShadow = 'none';
+    }
+  });
+}
+
+// Инициализация скриптов для футера
+function initFooterScripts() {
+  // Здесь можно добавить специфичные скрипты для футера, если понадобятся
+}
+
+// Загрузка компонентов при полной загрузке DOM
+document.addEventListener('DOMContentLoaded', function() {
+  loadComponent('header', '/components/header.html');
+  loadComponent('footer', '/components/footer.html');
+});
+
