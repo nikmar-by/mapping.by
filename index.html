@@ -19,13 +19,13 @@
   <meta name="twitter:description" content="Настраиваем поток клиентов из Яндекс и Google карт для малого бизнеса.">
   <meta name="twitter:image" content="https://mapping.by/img/og-mapping.jpg">
   <link rel="canonical" href="https://mapping.by/">
-<link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
-<link rel="shortcut icon" href="/img/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
-<link rel="manifest" href="/img/site.webmanifest" />
+  <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  <link rel="manifest" href="/img/site.webmanifest">
   <link rel="stylesheet" href="/styles.css">
-  <!-- Structured Data -->
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -92,12 +92,15 @@
   </script>
 </head>
 <body>
+
 <a href="#main" class="skip-link">Перейти к основному контенту</a>
+
 <header class="site-header" id="header">
-  <!-- Компонент header будет загружен здесь -->
+  <!-- header.html загружается сюда через JS -->
 </header>
 
-<main>
+<main id="main">
+
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-content">
@@ -166,15 +169,15 @@
       <a href="/contact.html" class="btn btn-light">Оставить заявку</a>
     </div>
   </section>
-  </section>
 
   <button id="backToTop" class="back-to-top" title="Наверх" style="display: none;">↑</button>
+
 </main>
 
 <footer class="site-footer" id="footer">
-  <!-- Компонент footer будет загружен здесь -->
+  <!-- footer.html загружается сюда через JS -->
 </footer>
+
 <script src="/scripts.js" defer></script>
 </body>
-
 </html>
