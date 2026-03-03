@@ -567,7 +567,7 @@ textarea {
 
 .footer-col a {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   color: #9ca3af;
   text-decoration: none;
   transition: color 0.2s;
@@ -602,7 +602,7 @@ textarea {
 .footer-nav-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px 80px;
+  gap: 0 80px;
 }
 
 .footer-bottom {
