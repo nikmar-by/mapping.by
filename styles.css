@@ -246,9 +246,10 @@ html {
 }
 
 .header-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
-  justify-content: space-between;
+  gap: 16px;
   padding: 12px 16px;
 }
 
@@ -683,3 +684,4 @@ textarea {
     padding: 0;
   }
 }
+
