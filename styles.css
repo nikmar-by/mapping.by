@@ -595,6 +595,13 @@ textarea {
   white-space: nowrap !important;
 }
 
+/* Два подстолбца в навигации футера */
+.footer-nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px 16px;
+}
+
 .footer-bottom {
   border-top: 1px solid #1f2937;
   padding: 12px 0;
