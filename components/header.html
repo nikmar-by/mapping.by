@@ -1,14 +1,14 @@
 <header class="site-header">
   <div class="container header-inner">
 
-    <!-- Столбец 1: Логотип -->
+    <!-- Логотип -->
     <a href="/" class="logo">
       <img src="/img/logo-mapping.svg" alt="Логотип агентства Mapping.by" class="logo-img">
       <span class="logo-text">MapPing.by</span>
     </a>
 
-    <!-- Столбцы 2–3: Вся навигация (занимает 2 ячейки) -->
-    <nav class="main-nav main-nav--wide">
+    <!-- Навигация (прижата вправо через margin-left: auto) -->
+    <nav class="main-nav">
       <a href="/" class="nav-link">Главная</a>
       <a href="/services.html" class="nav-link">Услуги</a>
       <a href="/pricing.html" class="nav-link">Тарифы</a>
@@ -16,17 +16,15 @@
       <a href="/about.html" class="nav-link">О нас</a>
       <a href="/faq.html" class="nav-link">FAQ</a>
       <a href="/blog.html" class="nav-link">Блог</a>
+      <a href="/contact.html" class="nav-link">Контакты</a>
     </nav>
 
-    <!-- Столбец 4: CTA кнопка -->
-    <div class="header-actions">
-      <a href="/contact.html" class="nav-link nav-link-primary">Контакты</a>
-    </div>
+    <!-- Кнопка мобильного меню -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню" aria-expanded="false">☰</button>
 
   </div>
 
   <!-- Мобильное меню -->
-  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню" aria-expanded="false">☰</button>
   <nav class="mobile-nav" id="mobileMenu">
     <a href="/" class="nav-link">Главная</a>
     <a href="/services.html" class="nav-link">Услуги</a>
@@ -35,6 +33,6 @@
     <a href="/about.html" class="nav-link">О нас</a>
     <a href="/faq.html" class="nav-link">FAQ</a>
     <a href="/blog.html" class="nav-link">Блог</a>
-    <a href="/contact.html" class="nav-link nav-link-primary">Контакты</a>
+    <a href="/contact.html" class="nav-link">Контакты</a>
   </nav>
 </header>
