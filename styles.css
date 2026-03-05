@@ -270,7 +270,7 @@ h3 {
 
 /* Hero */
 .hero {
-  padding: 64px 0 48px;
+  padding: 32px 0 24px;
 }
 
 .hero-inner {
@@ -685,6 +685,7 @@ textarea {
     margin: 0;
   }
 }
+
 
 
 
