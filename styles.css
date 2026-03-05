@@ -528,7 +528,7 @@ textarea {
 
 .footer-inner {
   display: grid;
-  grid-template-columns: auto max-content 1fr 1fr;
+  grid-template-columns: auto 2frt 1fr 2fr;
   gap: 24px;
   padding: 16px 16px 8px;
   align-items: start;
@@ -680,6 +680,7 @@ textarea {
     margin: 0;
   }
 }
+
 
 
 
