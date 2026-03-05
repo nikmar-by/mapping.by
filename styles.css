@@ -301,7 +301,7 @@ h3 {
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
+  gap: 16px 16px;
   margin-top: 24px;
 }
 
@@ -685,3 +685,4 @@ textarea {
     margin: 0;
   }
 }
+
