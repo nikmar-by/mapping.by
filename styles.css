@@ -527,7 +527,7 @@ textarea {
 .site-footer {
   background: #0f172a;
   color: #e5e7eb;
-  margin-top: 8px;
+  margin-top: 16px;
   padding-top: 0;
   overflow-x: hidden;
 }
@@ -685,6 +685,7 @@ textarea {
     margin: 0;
   }
 }
+
 
 
 
