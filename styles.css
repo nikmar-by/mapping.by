@@ -621,8 +621,7 @@ textarea {
 }
 
 .footer-bottom {
-  border-top: 1px solid #1f2937;
-  padding: 12px 0;
+  padding: 0 0 12px;
   font-size: 12px;
   color: #6b7280;
   text-align: center;
@@ -711,3 +710,4 @@ textarea {
     margin: 0;
   }
 }
+
