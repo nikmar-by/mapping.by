@@ -207,6 +207,7 @@ h3 {
 
 .logo-text {
   font-weight: 700;
+  font-size: 20px;
 }
 
 .main-nav {
@@ -679,3 +680,4 @@ textarea {
     margin: 0;
   }
 }
+
