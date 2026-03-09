@@ -382,6 +382,18 @@ h3 {
   color: var(--text-muted);
 }
 
+/* Key points section */
+.key-points {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.key-points h3 {
+  margin-top: 0;
+}
+
 /* Contact */
 .contact-grid {
   display: grid;
@@ -629,6 +641,31 @@ textarea {
 
 .footer-bottom p {
   margin: 0;
+}
+
+/* Admin note */
+.admin-note {
+  background: #f0fdf4;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  border-left: 5px solid #28a745;
+  /* Добавляем адаптивные отступы */
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (max-width: 768px) {
+  .admin-note {
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-note {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
 }
 
 /* ================================
