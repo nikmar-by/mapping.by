@@ -310,16 +310,45 @@ h3 {
 /* Cards, grid */
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px 16px;
-  margin-top: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+  align-items: stretch;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  height: 100%;
+
   background: var(--bg-light);
-  border-radius: 12px;
-  padding: 20px;
   border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    border-color .3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
+  border-color: rgba(37,99,235,.25);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+.card p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.7;
 }
 
 /* CTA */
@@ -747,6 +776,15 @@ textarea {
     height: auto;
     margin: 0;
   }
+
+  /* Планшет и телефон */
+@media (max-width: 992px) {
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+}
 }
 
 
