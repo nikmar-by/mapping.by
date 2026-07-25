@@ -332,6 +332,15 @@ h3 {
   box-shadow: 0 15px 35px rgba(0,0,0,.08);
 }
 
+/* Разделитель внутри карточек */
+.card .divider {
+  text-align: center;
+  margin: 18px 0;
+  color: var(--accent);
+  letter-spacing: 8px;
+  font-size: 12px;
+}
+
 /* CTA */
 .cta-inner {
   display: flex;
