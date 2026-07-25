@@ -514,11 +514,13 @@ textarea {
   list-style: none;
   padding: 0;
   margin: 20px 0;
+  text-align: left;
 }
 
 .pricing-card li {
   padding: 8px 0;
   border-bottom: 1px solid var(--border);
+  text-align: left;
 }
 
 .pricing-card li:last-child {
