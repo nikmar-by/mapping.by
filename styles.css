@@ -310,16 +310,26 @@ h3 {
 /* Cards, grid */
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px 16px;
-  margin-top: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+  align-items: stretch;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background: var(--bg-light);
   border-radius: 12px;
-  padding: 20px;
+  padding: 24px;
   border: 1px solid var(--border);
+  transition: all .25s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,.08);
 }
 
 /* CTA */
@@ -657,6 +667,11 @@ textarea {
 }
 
 @media (max-width: 768px) {
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
   .admin-note {
     padding: 12px;
     margin-bottom: 20px;
@@ -676,6 +691,11 @@ textarea {
 
 /* Планшеты (до 992px) */
 @media (max-width: 992px) {
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .footer-inner {
     grid-template-columns: 1fr 1fr;
     gap: 32px 20px;
