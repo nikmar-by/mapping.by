@@ -74,15 +74,14 @@
       </div>
       <div>
    
-<form
-  id="contactForm"
+<form id="contactForm"
   class="contact-form"
   action="https://api.staticforms.dev/submit"
   method="POST"
 >
-  <!-- ключ Static Forms -->
+  <!-- Static Forms accessKey -->
   <input type="hidden" name="accessKey" value="sf_26ffa50392d0a4ff9a9f33df">
-          
+
   <!-- Имя -->
   <div class="form-group">
     <label for="name">Имя</label>
@@ -93,7 +92,6 @@
       required
       placeholder="Как к вам обращаться?"
     >
-    <div class="form-feedback" aria-live="polite"></div>
   </div>
 
   <!-- Телефон или Telegram -->
@@ -106,7 +104,6 @@
       required
       placeholder="+375… или @username"
     >
-    <div class="form-feedback" aria-live="polite"></div>
   </div>
 
   <!-- Соцсети или сайт -->
@@ -116,9 +113,8 @@
       id="social"
       name="social"
       type="text"
-      placeholder="Например: @username в Telegram, профиль в Instagram или адрес сайта"
+      placeholder="Например: профиль в Instagram или адрес сайта"
     >
-    <div class="form-feedback" aria-live="polite"></div>
   </div>
 
   <!-- Сфера бизнеса -->
@@ -164,7 +160,6 @@
         <option value="any">ЛЮБОЙ ЛОКАЛЬНЫЙ ОБЪЕКТ БИЗНЕСА</option>
       </optgroup>
     </select>
-    <div class="form-feedback" aria-live="polite"></div>
   </div>
 
   <!-- Есть ли вы на картах -->
@@ -177,7 +172,6 @@
       <option value="google-only">Только в Google</option>
       <option value="no">Нет / Не знаю</option>
     </select>
-    <div class="form-feedback" aria-live="polite"></div>
   </div>
 
   <!-- Описание задачи -->
@@ -187,24 +181,20 @@
       id="message"
       name="message"
       rows="4"
-      placeholder="Например: «хочу больше заказов с карт, сейчас нас не видно по запросу…»"
+      placeholder="Например: «хочу больше заказов с карт, сейчас нас не видно…»"
     ></textarea>
-    <div class="form-feedback" aria-live="polite"></div>
   </div>
 
   <!-- Кнопка отправки -->
-  <button type="submit" class="btn btn-primary" id="submitBtn">
+  <button type="submit" class="btn btn-primary">
     <span class="submit-text">Отправить заявку</span>
-    <span class="submit-spinner">⏳</span>
   </button>
-
-  <!-- Сообщение пользователю -->
-  <div id="formMessage" class="form-message" aria-live="polite"></div>
 
   <p class="form-note">
     Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
   </p>
 </form>
+        
       </div>
     </div>
   </section>
