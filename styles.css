@@ -567,9 +567,9 @@ textarea {
 
 
 .price {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 700;
-  margin: 12px 0;
+  margin: 10px 0;
   color: var(--accent);
 }
 
