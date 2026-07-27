@@ -8,19 +8,22 @@
   <meta name="robots" content="index,follow">
   <meta name="author" content="Mapping.by">
   <meta name="keywords" content="контакты продвижение на картах, заказать локальное SEO, аудит Яндекс карт">
+
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Mapping.by">
   <meta property="og:title" content="Контакты Mapping.by — оставить заявку на продвижение">
   <meta property="og:description" content="Свяжитесь с нами, чтобы узнать, почему вас не видно на картах и как исправить ситуацию.">
   <meta property="og:url" content="https://mapping.by/contact.html">
   <meta property="og:image" content="https://mapping.by/img/og-mapping.jpg">
+
   <link rel="canonical" href="https://mapping.by/contact.html">
-   <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
-<link rel="shortcut icon" href="/img/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
-<link rel="manifest" href="/img/site.webmanifest" />
+  <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  <link rel="manifest" href="/img/site.webmanifest">
   <link rel="stylesheet" href="/styles.css">
+
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
@@ -53,171 +56,162 @@
   </script>
 </head>
 <body>
-<a href="#main" class="skip-link">Перейти к основному контенту</a>
-<header class="site-header" id="header">
-  <!-- Компонент header будет загружен здесь -->
-</header>
+  <a href="#main" class="skip-link">Перейти к основному контенту</a>
 
-<main>
-  <section class="section">
-    <div class="container contact-grid">
-      <div>
-        <h1>Контакты и заявка</h1>
-        <p class="page-intro">
-          Заполните форму — мы проверим, как ваш бизнес виден на картах, и предложим понятный план без сложных терминов.
-        </p>
-        <p><strong>Телефон:</strong> <a href="tel:+375296100703">+375 (29) 610‑07‑03</a></p>
-        <p><strong>Email:</strong> <a href="mailto:admin@mapping.by">admin@mapping.by</a></p>
-        <p><strong>Telegram:</strong> <a href="tg://resolve?domain=mapping_by&direct" target="_blank" rel="noopener"> Написать
-        </a>
-       </p>
+  <header class="site-header" id="header">
+    <!-- Компонент header будет загружен здесь -->
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="container contact-grid">
+        <div>
+          <h1>Контакты и заявка</h1>
+          <p class="page-intro">
+            Заполните форму — мы проверим, как ваш бизнес виден на картах, и предложим понятный план без сложных терминов.
+          </p>
+
+          <p><strong>Телефон:</strong> <a href="tel:+375296100703">+375 (29) 610‑07‑03</a></p>
+          <p><strong>Email:</strong> <a href="mailto:admin@mapping.by">admin@mapping.by</a></p>
+          <p><strong>Telegram:</strong> <a href="tg://resolve?domain=mapping_by&direct" target="_blank" rel="noopener">Написать</a></p>
+        </div>
+
+        <div>
+          <form
+            id="contactForm"
+            class="contact-form"
+            action="https://api.staticforms.dev/submit"
+            method="POST"
+          >
+            <!-- Static Forms accessKey -->
+            <input type="hidden" name="accessKey" value="sf_26ffa50392d0a4ff9a9f33df">
+
+            <!-- (опционально) тема письма и редирект -->
+            <input type="hidden" name="subject" value="Новая заявка с Mapping.by">
+            <!-- если сделаешь страницу спасибо: -->
+            <!-- <input type="hidden" name="_redirect" value="https://mapping.by/thanks.html"> -->
+
+            <!-- Имя -->
+            <div class="form-group">
+              <label for="name">Имя</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                placeholder="Как к вам обращаться?"
+              >
+            </div>
+
+            <!-- Телефон или Telegram -->
+            <div class="form-group">
+              <label for="phone">Телефон или Telegram</label>
+              <input
+                id="phone"
+                name="phone"
+                type="text"
+                required
+                placeholder="+375… или @username"
+              >
+            </div>
+
+            <!-- Соцсети или сайт -->
+            <div class="form-group">
+              <label for="social">Укажите ваши соцсети или сайт</label>
+              <input
+                id="social"
+                name="social"
+                type="text"
+                placeholder="Например: профиль в Instagram или адрес сайта"
+              >
+            </div>
+
+            <!-- Сфера бизнеса -->
+            <div class="form-group">
+              <label for="business-type">Сфера бизнеса</label>
+              <select id="business-type" name="business-type" required>
+                <option value="" selected>Выберите сферу бизнеса</option>
+
+                <optgroup label="Проживание и отдых">
+                  <option value="agro">Агроусадьба</option>
+                  <option value="base">База отдыха</option>
+                  <option value="hotel">Гостиница или отель</option>
+                  <option value="camping">Кемпинг или глэмпинг</option>
+                </optgroup>
+
+                <optgroup label="Еда и напитки">
+                  <option value="restaurant">Кафе, ресторан или бар</option>
+                  <option value="coffee">Кофейня или пекарня</option>
+                </optgroup>
+
+                <optgroup label="Здоровье и красота">
+                  <option value="spa">Баня или SPA-комплекс</option>
+                  <option value="beauty">Салон красоты или барбершоп</option>
+                  <option value="medical">Медицинский центр или стоматология</option>
+                  <option value="pharmacy">Аптека</option>
+                </optgroup>
+
+                <optgroup label="Авто">
+                  <option value="auto-service">Автосервис, шиномонтаж или автомойка</option>
+                  <option value="gas">Автозаправочная станция (АЗС)</option>
+                </optgroup>
+
+                <optgroup label="Туризм и развлечения">
+                  <option value="tourism">Туристический объект или достопримечательность</option>
+                  <option value="active">Рыболовный комплекс или место активного отдыха</option>
+                  <option value="fitness">Фитнес-клуб или спортивный центр</option>
+                  <option value="entertainment">Развлекательный центр или семейный парк</option>
+                </optgroup>
+
+                <optgroup label="Бизнес и услуги">
+                  <option value="shop">Магазин или торговая точка</option>
+                  <option value="office">Офис компании, работающей с клиентами</option>
+                  <option value="any">ЛЮБОЙ ЛОКАЛЬНЫЙ ОБЪЕКТ БИЗНЕСА</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <!-- Есть ли вы на картах -->
+            <div class="form-group">
+              <label for="maps-status">Есть ли вы на картах?</label>
+              <select id="maps-status" name="maps-status" required>
+                <option value="">Выберите вариант</option>
+                <option value="yes">Да, в Яндекс и Google</option>
+                <option value="yandex-only">Только в Яндекс</option>
+                <option value="google-only">Только в Google</option>
+                <option value="no">Нет / Не знаю</option>
+              </select>
+            </div>
+
+            <!-- Описание задачи -->
+            <div class="form-group">
+              <label for="message">Кратко опишите задачу</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Например: «хочу больше заказов с карт, сейчас нас не видно…»"
+              ></textarea>
+            </div>
+
+            <!-- Кнопка отправки -->
+            <button type="submit" class="btn btn-primary">
+              <span class="submit-text">Отправить заявку</span>
+            </button>
+
+            <p class="form-note">
+              Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
+            </p>
+          </form>
+        </div>
       </div>
-      <div>
-   
-<form id="contactForm"
-  class="contact-form"
-  action="https://api.staticforms.dev/submit"
-  method="POST"
->
-  <!-- Static Forms accessKey -->
-  <input type="hidden" name="accessKey" value="sf_26ffa50392d0a4ff9a9f33df">
+    </section>
 
-  <!-- Имя -->
-  <div class="form-group">
-    <label for="name">Имя</label>
-    <input
-      id="name"
-      name="name"
-      type="text"
-      required
-      placeholder="Как к вам обращаться?"
-    >
-  </div>
+    <button id="backToTop" class="back-to-top" title="Наверх" style="display: none;">↑</button>
+  </main>
 
-  <!-- Телефон или Telegram -->
-  <div class="form-group">
-    <label for="phone">Телефон или Telegram</label>
-    <input
-      id="phone"
-      name="phone"
-      type="text"
-      required
-      placeholder="+375… или @username"
-    >
-  </div>
-
-  <!-- Соцсети или сайт -->
-  <div class="form-group">
-    <label for="social">Укажите ваши соцсети или сайт</label>
-    <input
-      id="social"
-      name="social"
-      type="text"
-      placeholder="Например: профиль в Instagram или адрес сайта"
-    >
-  </div>
-
-  <!-- Сфера бизнеса -->
-  <div class="form-group">
-    <label for="business-type">Сфера бизнеса</label>
-    <select id="business-type" name="business-type" required>
-      <option value="" selected>Выберите сферу бизнеса</option>
-
-      <optgroup label="Проживание и отдых">
-        <option value="agro">Агроусадьба</option>
-        <option value="base">База отдыха</option>
-        <option value="hotel">Гостиница или отель</option>
-        <option value="camping">Кемпинг или глэмпинг</option>
-      </optgroup>
-
-      <optgroup label="Еда и напитки">
-        <option value="restaurant">Кафе, ресторан или бар</option>
-        <option value="coffee">Кофейня или пекарня</option>
-      </optgroup>
-
-      <optgroup label="Здоровье и красота">
-        <option value="spa">Баня или SPA-комплекс</option>
-        <option value="beauty">Салон красоты или барбершоп</option>
-        <option value="medical">Медицинский центр или стоматология</option>
-        <option value="pharmacy">Аптека</option>
-      </optgroup>
-
-      <optgroup label="Авто">
-        <option value="auto-service">Автосервис, шиномонтаж или автомойка</option>
-        <option value="gas">Автозаправочная станция (АЗС)</option>
-      </optgroup>
-
-      <optgroup label="Туризм и развлечения">
-        <option value="tourism">Туристический объект или достопримечательность</option>
-        <option value="active">Рыболовный комплекс или место активного отдыха</option>
-        <option value="fitness">Фитнес-клуб или спортивный центр</option>
-        <option value="entertainment">Развлекательный центр или семейный парк</option>
-      </optgroup>
-
-      <optgroup label="Бизнес и услуги">
-        <option value="shop">Магазин или торговая точка</option>
-        <option value="office">Офис компании, работающей с клиентами</option>
-        <option value="any">ЛЮБОЙ ЛОКАЛЬНЫЙ ОБЪЕКТ БИЗНЕСА</option>
-      </optgroup>
-    </select>
-  </div>
-
-  <!-- Есть ли вы на картах -->
-  <div class="form-group">
-    <label for="maps-status">Есть ли вы на картах?</label>
-    <select id="maps-status" name="maps-status" required>
-      <option value="">Выберите вариант</option>
-      <option value="yes">Да, в Яндекс и Google</option>
-      <option value="yandex-only">Только в Яндекс</option>
-      <option value="google-only">Только в Google</option>
-      <option value="no">Нет / Не знаю</option>
-    </select>
-  </div>
-
-  <!-- Описание задачи -->
-  <div class="form-group">
-    <label for="message">Кратко опишите задачу</label>
-    <textarea
-      id="message"
-      name="message"
-      rows="4"
-      placeholder="Например: «хочу больше заказов с карт, сейчас нас не видно…»"
-    ></textarea>
-  </div>
-
-  <!-- Кнопка отправки -->
-  <button type="submit" class="btn btn-primary">
-    <span class="submit-text">Отправить заявку</span>
-  </button>
-
-  <p class="form-note">
-    Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
-  </p>
-</form>
-        
-      </div>
-    </div>
-  </section>
-
-  <button id="backToTop" class="back-to-top" title="Наверх" style="display: none;">↑</button>
-</main>
-
-<footer class="site-footer" id="footer">
-  <!-- Компонент footer будет загружен здесь -->
-</footer>
-
-
+  <footer class="site-footer" id="footer">
+    <!-- Компонент footer будет загружен здесь -->
+  </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
