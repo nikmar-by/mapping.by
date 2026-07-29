@@ -177,7 +177,18 @@ h3 {
 .btn.loading .submit-spinner {
   display: inline;
 }
+/* Зеленая кнопка после успешной отправки формы */
+.btn-success {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+  color: #fff !important;
+  cursor: default;
+}
 
+.btn-success:hover {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+}
 /* Header */
 .site-header {
   background: var(--bg-light);
