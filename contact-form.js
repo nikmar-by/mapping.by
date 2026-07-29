@@ -72,8 +72,17 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
 
-      // Состояние загрузки
-      if (submitBtn) submitBtn.disabled = true;
+// Состояние загрузки
+if (submitBtn) {
+  submitBtn.disabled = true;
+
+  const submitText = submitBtn.querySelector('.submit-text');
+  if (submitText) {
+    submitText.textContent = "Отправка...";
+  } else {
+    submitBtn.textContent = "Отправка...";
+  }
+}
 
       try {
         // Передаем стандартный FormData (без конвертации в JSON и ручного удаления полей)
@@ -87,7 +96,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const result = await response.json();
 
-        if (response.ok && result.success) {
+     if (response.ok && result.success) {
+
+  if (submitBtn) {
+    const submitText = submitBtn.querySelector('.submit-text');
+
+    if (submitText) {
+      submitText.textContent = "✅ ЗАЯВКА ОТПРАВЛЕНА";
+    } else {
+      submitBtn.textContent = "✅ ЗАЯВКА ОТПРАВЛЕНА";
+    }
+
+    submitBtn.classList.remove("btn-primary");
+    submitBtn.classList.add("btn-success");
+    submitBtn.disabled = true;
+  }
+         
           if (formMessage) {
             formMessage.innerHTML = '<div class="form-success"><h3>Спасибо!</h3><p>Ваша заявка успешно отправлена.</p></div>';
             formMessage.style.display = 'block';
@@ -98,15 +122,28 @@ document.addEventListener('DOMContentLoaded', function() {
           throw new Error(result.message || 'Ошибка сервера');
         }
 
-      } catch (error) {
-        console.error('StaticForms Error:', error);
-        if (formMessage) {
-          formMessage.innerHTML = '<div class="form-error"><h3>Ошибка</h3><p>Не удалось отправить заявку. Попробуйте еще раз.</p></div>';
-          formMessage.style.display = 'block';
-        }
-      } finally {
-        if (submitBtn) submitBtn.disabled = false;
-      }
+   } catch (error) {
+  console.error('StaticForms Error:', error);
+
+  if (formMessage) {
+    formMessage.innerHTML =
+      '<div class="form-error"><h3>Ошибка</h3><p>Не удалось отправить заявку. Попробуйте еще раз.</p></div>';
+    formMessage.style.display = 'block';
+  }
+
+  if (submitBtn) {
+    submitBtn.disabled = false;
+
+    const submitText = submitBtn.querySelector('.submit-text');
+
+    if (submitText) {
+      submitText.textContent = "Отправить заявку";
+    } else {
+      submitBtn.textContent = "Отправить заявку";
+    }
+  }
+}
+     
     });
 
     // Валидация полей (сработает только на обязательные поля с атрибутом required)
