@@ -5,37 +5,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttonText = button.querySelector(".submit-text");
     const messageBox = document.getElementById("formMessage");
 
-    // ----------------------------
-    // Заполняем скрытые поля
-    // ----------------------------
+    if (!form) return;
 
-    const setValue = (id, value) => {
-        const el = document.getElementById(id);
-        if (el) el.value = value;
-    };
+    function setHiddenFields() {
 
-    setValue("page", window.location.href);
-    setValue("date", new Date().toLocaleString("ru-RU"));
-    setValue("userAgent", navigator.userAgent);
-    setValue("referrer", document.referrer);
+        const setValue = (id, value) => {
+            const field = document.getElementById(id);
+            if (field) field.value = value;
+        };
 
-    const params = new URLSearchParams(window.location.search);
+        const params = new URLSearchParams(window.location.search);
 
-    setValue("utm_source", params.get("utm_source") || "");
-    setValue("utm_medium", params.get("utm_medium") || "");
-    setValue("utm_campaign", params.get("utm_campaign") || "");
-    setValue("utm_content", params.get("utm_content") || "");
-    setValue("utm_term", params.get("utm_term") || "");
+        setValue("page", window.location.href);
+        setValue("referrer", document.referrer);
+        setValue("utm_source", params.get("utm_source") || "");
+        setValue("utm_campaign", params.get("utm_campaign") || "");
+    }
 
-    // ----------------------------
-    // Сообщения
-    // ----------------------------
+    setHiddenFields();
 
-    function showMessage(type, text) {
+    function showMessage(type, html) {
 
         messageBox.innerHTML = `
             <div class="form-${type}">
-                ${text}
+                ${html}
             </div>
         `;
 
@@ -46,9 +39,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // ----------------------------
-    // Отправка формы
-    // ----------------------------
+    function isFake(value) {
+
+        value = value.trim().toLowerCase();
+
+        const fakeValues = [
+            "1",
+            "11",
+            "111",
+            "1111",
+            "2",
+            "22",
+            "222",
+            "2222",
+            "333",
+            "444",
+            "555",
+            "666",
+            "777",
+            "888",
+            "999",
+            "000",
+            "test",
+            "qwerty",
+            "asdf"
+        ];
+
+        return fakeValues.includes(value);
+
+    }
 
     form.addEventListener("submit", async (e) => {
 
@@ -59,13 +78,45 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        const name = form.name.value.trim();
+        const phone = form.phone.value.trim();
+        const message = form.message.value.trim();
+
+        if (isFake(name)) {
+
+            showMessage(
+                "error",
+                "<p>Укажите корректное имя.</p>"
+            );
+
+            return;
+        }
+
+        if (isFake(phone)) {
+
+            showMessage(
+                "error",
+                "<p>Укажите корректный телефон.</p>"
+            );
+
+            return;
+        }
+
+        if (message.length < 15) {
+
+            showMessage(
+                "error",
+                "<p>Опишите задачу немного подробнее.</p>"
+            );
+
+            return;
+        }
+
         button.disabled = true;
         button.classList.add("loading");
         buttonText.textContent = "Отправляем...";
 
         messageBox.innerHTML = "";
-
-        const formData = new FormData(form);
 
         try {
 
@@ -73,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 method: "POST",
 
-                body: formData,
+                body: new FormData(form),
 
                 headers: {
                     Accept: "application/json"
@@ -83,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const result = await response.json();
 
-            if (response.ok) {
+            if (response.ok && result.success) {
 
                 showMessage(
                     "success",
@@ -96,22 +147,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 form.reset();
 
-                // снова заполняем скрытые поля
-
-                setValue("page", window.location.href);
-                setValue("date", new Date().toLocaleString("ru-RU"));
-                setValue("userAgent", navigator.userAgent);
-                setValue("referrer", document.referrer);
-
-                setValue("utm_source", params.get("utm_source") || "");
-                setValue("utm_medium", params.get("utm_medium") || "");
-                setValue("utm_campaign", params.get("utm_campaign") || "");
-                setValue("utm_content", params.get("utm_content") || "");
-                setValue("utm_term", params.get("utm_term") || "");
+                setHiddenFields();
 
             } else {
 
-                throw new Error(result.message || "Ошибка отправки");
+                throw new Error(result.message || "Ошибка отправки.");
 
             }
 
@@ -123,8 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "error",
                 `
                 <h3>⚠ Не удалось отправить заявку</h3>
-                <p>Попробуйте еще раз через несколько минут.</p>
-                <p>Если проблема повторяется — свяжитесь с нами по телефону.</p>
+                <p>Попробуйте ещё раз через несколько минут.</p>
                 `
             );
 
