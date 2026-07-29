@@ -9,22 +9,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const messageBox = document.getElementById("formMessage");
 
     function fillHiddenFields() {
-
         const params = new URLSearchParams(window.location.search);
 
-        document.getElementById("page").value = window.location.href;
-        document.getElementById("referrer").value = document.referrer;
-        document.getElementById("utm_source").value =
-            params.get("utm_source") || "";
+        const pageInput = document.getElementById("page");
+        const referrerInput = document.getElementById("referrer");
+        const utmSourceInput = document.getElementById("utm_source");
+        const utmCampaignInput = document.getElementById("utm_campaign");
 
-        document.getElementById("utm_campaign").value =
-            params.get("utm_campaign") || "";
+        if (pageInput) pageInput.value = window.location.href;
+        if (referrerInput) referrerInput.value = document.referrer;
+        if (utmSourceInput) utmSourceInput.value = params.get("utm_source") || "";
+        if (utmCampaignInput) utmCampaignInput.value = params.get("utm_campaign") || "";
     }
 
     fillHiddenFields();
 
     function showMessage(type, text) {
-
         messageBox.innerHTML = `
             <div class="form-${type}">
                 ${text}
@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
             behavior: "smooth",
             block: "center"
         });
-
     }
 
     form.addEventListener("submit", async function (e) {
@@ -48,22 +47,30 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         button.disabled = true;
-        buttonText.textContent = "Отправляем...";
+        if (buttonText) buttonText.textContent = "Отправляем...";
 
         messageBox.innerHTML = "";
 
         try {
+            // Преобразуем данные формы в обычный JS-объект
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
 
-            const response = await fetch(form.action, {
-
-                method: "POST",
-
-                body: new FormData(form),
-
-                headers: {
-                    Accept: "application/json"
+            // Удаляем пустые поля, чтобы не забивать запрос невалидными пустыми строками
+            Object.keys(data).forEach(key => {
+                if (data[key] === "" || data[key] === null) {
+                    delete data[key];
                 }
+            });
 
+            // Отправляем как чистый JSON-запрос
+            const response = await fetch(form.action, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(data)
             });
 
             const result = await response.json();
@@ -79,18 +86,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
                 form.reset();
-
                 fillHiddenFields();
 
             } else {
-
-                throw new Error(result.message);
-
+                throw new Error(result.message || "Ошибка отправки формы");
             }
 
         } catch (error) {
 
-            console.error(error);
+            console.error("StaticForms Error:", error);
 
             showMessage(
                 "error",
@@ -103,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } finally {
 
             button.disabled = false;
-            buttonText.textContent = "Отправить заявку";
+            if (buttonText) buttonText.textContent = "Отправить заявку";
 
         }
 
