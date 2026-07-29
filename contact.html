@@ -98,238 +98,247 @@
         <div id="formMessage"></div>
 
         <form
-            id="contactForm"
-            class="contact-form"
-            action="https://api.staticforms.dev/submit"
-            method="POST"
-            novalidate>
+    id="contactForm"
+    class="contact-form"
+    action="https://api.staticforms.dev/submit"
+    method="POST"
+    novalidate>
 
-            <!-- StaticForms -->
-            <input
-                type="hidden"
-                name="accessKey"
-                value="sf_26ffa50392d0a4ff9a9f33df">
+    <!-- StaticForms -->
+    <input
+        type="hidden"
+        name="accessKey"
+        value="sf_26ffa50392d0a4ff9a9f33df">
 
-            <input
-                type="hidden"
-                name="subject"
-                value="Новая заявка с Mapping.by">
+    <input
+        type="hidden"
+        name="subject"
+        value="Новая заявка с Mapping.by">
 
-            <!-- Honeypot -->
-           <div
-    style="position:absolute;left:-9999px;"
-    aria-hidden="true">
+    <!-- Только нужные скрытые поля -->
+    <input type="hidden" name="page" id="page">
+    <input type="hidden" name="referrer" id="referrer">
+    <input type="hidden" name="utm_source" id="utm_source">
+    <input type="hidden" name="utm_campaign" id="utm_campaign">
 
-    <label>
-        Не заполняйте это поле
+    <!-- Honeypot -->
+    <div
+        style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;"
+        aria-hidden="true">
+
+        <label for="website">
+            Не заполняйте это поле
+        </label>
 
         <input
+            id="website"
             type="text"
             name="honeypot"
             tabindex="-1"
             autocomplete="off">
 
-    </label>
+    </div>
 
-</div>
+    <div class="form-group">
 
-            <!-- Дополнительная информация -->
-            <input type="hidden" name="page" id="page">
-           <input type="hidden" name="referrer" id="referrer">
-            <input type="hidden" name="utm_source" id="utm_source">
-           <input type="hidden" name="utm_campaign" id="utm_campaign">
-           <div class="form-group">
+        <label for="name">
+            Имя
+        </label>
 
-                <label for="name">
-                    Имя
-                </label>
+        <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            minlength="2"
+            maxlength="80"
+            autocomplete="name"
+            placeholder="Как к вам обращаться?">
 
-                <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    autocomplete="name"
-                    placeholder="Как к вам обращаться?">
+    </div>
 
-            </div>
+    <div class="form-group">
 
-            <div class="form-group">
+        <label for="phone">
+            Телефон или Telegram
+        </label>
 
-                <label for="phone">
-                    Телефон или Telegram
-                </label>
+        <input
+            id="phone"
+            name="phone"
+            type="tel"
+            required
+            minlength="7"
+            maxlength="25"
+            autocomplete="tel"
+            inputmode="tel"
+            placeholder="+375291234567">
 
-                <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    inputmode="tel"
-                    autocomplete="tel"
-                    required
-                    placeholder="+375… или @username">
+    </div>
 
-            </div>
+    <div class="form-group">
 
-            <div class="form-group">
+        <label for="social">
+            Сайт или социальная сеть
+        </label>
 
-                <label for="social">
-                    Укажите ваши соцсети или сайт
-                </label>
+        <input
+            id="social"
+            name="social"
+            type="url"
+            autocomplete="url"
+            placeholder="https://site.by">
 
-                <input
-                    id="social"
-                    name="social"
-                    type="text"
-                    autocomplete="url"
-                    placeholder="Например: профиль Instagram или адрес сайта">
+    </div>
 
-            </div>
+    <div class="form-group">
 
-            <div class="form-group">
+        <label for="business-type">
+            Сфера бизнеса
+        </label>
 
-                <label for="business-type">
-                    Сфера бизнеса
-                </label>
+        <select
+            id="business-type"
+            name="business-type"
+            required>
 
-                <select
-                    id="business-type"
-                    name="business-type"
-                    required>
+            <option value="" selected>
+                Выберите сферу бизнеса
+            </option>
 
-                    <option value="" selected>
-                        Выберите сферу бизнеса
-                    </option>
+            <optgroup label="Проживание и отдых">
+                <option value="agro">Агроусадьба</option>
+                <option value="base">База отдыха</option>
+                <option value="hotel">Гостиница или отель</option>
+                <option value="camping">Кемпинг или глэмпинг</option>
+            </optgroup>
 
-                    <optgroup label="Проживание и отдых">
-                        <option value="agro">Агроусадьба</option>
-                        <option value="base">База отдыха</option>
-                        <option value="hotel">Гостиница или отель</option>
-                        <option value="camping">Кемпинг или глэмпинг</option>
-                    </optgroup>
+            <optgroup label="Еда и напитки">
+                <option value="restaurant">Кафе, ресторан или бар</option>
+                <option value="coffee">Кофейня или пекарня</option>
+            </optgroup>
 
-                    <optgroup label="Еда и напитки">
-                        <option value="restaurant">Кафе, ресторан или бар</option>
-                        <option value="coffee">Кофейня или пекарня</option>
-                    </optgroup>
+            <optgroup label="Здоровье и красота">
+                <option value="spa">Баня или SPA-комплекс</option>
+                <option value="beauty">Салон красоты или барбершоп</option>
+                <option value="medical">Медицинский центр или стоматология</option>
+                <option value="pharmacy">Аптека</option>
+            </optgroup>
 
-                    <optgroup label="Здоровье и красота">
-                        <option value="spa">Баня или SPA-комплекс</option>
-                        <option value="beauty">Салон красоты или барбершоп</option>
-                        <option value="medical">Медицинский центр или стоматология</option>
-                        <option value="pharmacy">Аптека</option>
-                    </optgroup>
+            <optgroup label="Авто">
+                <option value="auto-service">
+                    Автосервис, шиномонтаж или автомойка
+                </option>
 
-                    <optgroup label="Авто">
-                        <option value="auto-service">
-                            Автосервис, шиномонтаж или автомойка
-                        </option>
+                <option value="gas">
+                    АЗС
+                </option>
+            </optgroup>
 
-                        <option value="gas">
-                            Автозаправочная станция (АЗС)
-                        </option>
-                    </optgroup>
+            <optgroup label="Туризм и развлечения">
+                <option value="tourism">
+                    Туристический объект
+                </option>
 
-                    <optgroup label="Туризм и развлечения">
-                        <option value="tourism">
-                            Туристический объект или достопримечательность
-                        </option>
+                <option value="active">
+                    Активный отдых
+                </option>
 
-                        <option value="active">
-                            Рыболовный комплекс или место активного отдыха
-                        </option>
+                <option value="fitness">
+                    Фитнес-клуб
+                </option>
 
-                        <option value="fitness">
-                            Фитнес-клуб или спортивный центр
-                        </option>
+                <option value="entertainment">
+                    Развлекательный центр
+                </option>
+            </optgroup>
 
-                        <option value="entertainment">
-                            Развлекательный центр или семейный парк
-                        </option>
-                    </optgroup>
+            <optgroup label="Бизнес и услуги">
+                <option value="shop">
+                    Магазин
+                </option>
 
-                    <optgroup label="Бизнес и услуги">
-                        <option value="shop">
-                            Магазин или торговая точка
-                        </option>
+                <option value="office">
+                    Офис
+                </option>
 
-                        <option value="office">
-                            Офис компании
-                        </option>
+                <option value="any">
+                    Любой локальный бизнес
+                </option>
+            </optgroup>
 
-                        <option value="any">
-                            ЛЮБОЙ ЛОКАЛЬНЫЙ ОБЪЕКТ БИЗНЕСА
-                        </option>
-                    </optgroup>
-                </select>
+        </select>
 
-            </div>
+    </div>
 
-            <div class="form-group">
+    <div class="form-group">
 
-                <label for="maps-status">
-                    Есть ли вы на картах?
-                </label>
+        <label for="maps-status">
+            Есть ли вы на картах?
+        </label>
 
-                <select
-                    id="maps-status"
-                    name="maps-status"
-                    required>
+        <select
+            id="maps-status"
+            name="maps-status"
+            required>
 
-                    <option value="">
-                        Выберите вариант
-                    </option>
+            <option value="">
+                Выберите вариант
+            </option>
 
-                    <option value="yes">
-                        Да, в Яндекс и Google
-                    </option>
+            <option value="yes">
+                Да, в Яндекс и Google
+            </option>
 
-                    <option value="yandex-only">
-                        Только в Яндекс
-                    </option>
+            <option value="yandex-only">
+                Только в Яндекс
+            </option>
 
-                    <option value="google-only">
-                        Только в Google
-                    </option>
+            <option value="google-only">
+                Только в Google
+            </option>
 
-                    <option value="no">
-                        Нет / Не знаю
-                    </option>
+            <option value="no">
+                Нет / Не знаю
+            </option>
 
-                </select>
+        </select>
 
-            </div>
+    </div>
 
-            <div class="form-group">
+    <div class="form-group">
 
-                <label for="message">
-                    Кратко опишите задачу
-                </label>
+        <label for="message">
+            Кратко опишите задачу
+        </label>
 
-                <textarea
-                    id="message"
-                    name="message"
-                    rows="4"
-                    placeholder="Например: хочу получать больше клиентов с карт, сейчас нас почти не видно"></textarea>
+        <textarea
+            id="message"
+            name="message"
+            rows="4"
+            required
+            minlength="15"
+            maxlength="1500"
+            placeholder="Например: хочу получать больше клиентов с карт, сейчас нас почти не видно"></textarea>
 
-            </div>
+    </div>
 
-            <button
-                type="submit"
-                id="submitButton"
-                class="btn btn-primary">
+    <button
+        type="submit"
+        id="submitButton"
+        class="btn btn-primary">
 
-                <span class="submit-text">
-                    Отправить заявку
-                </span>
+        <span class="submit-text">
+            Отправить заявку
+        </span>
 
-            </button>
+    </button>
 
-            <p class="form-note">
-                Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
-            </p>
+    <p class="form-note">
+        Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
+    </p>
 
-        </form>
+</form>
 
     </div>
 
