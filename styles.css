@@ -521,7 +521,31 @@ textarea {
   background: #f8d7da;
   color: #721c24;
 }
+.form-success {
+    padding: 18px;
+    margin-top: 16px;
+    background: #ecfdf5;
+    border: 1px solid #16a34a;
+    color: #166534;
+    border-radius: 10px;
+}
 
+.form-success h3 {
+    margin: 0 0 8px;
+}
+
+.form-error {
+    padding: 18px;
+    margin-top: 16px;
+    background: #fef2f2;
+    border: 1px solid #dc2626;
+    color: #991b1b;
+    border-radius: 10px;
+}
+
+.form-error h3 {
+    margin: 0 0 8px;
+}
 /* Pricing */
 
 .pricing-plans {
