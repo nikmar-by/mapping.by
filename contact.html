@@ -99,43 +99,41 @@
 
 <form id="contactForm" class="contact-form" action="https://api.staticforms.dev/submit" method="POST" novalidate>
 
-    <!-- Обязательный apiKey -->
-    <input type="hidden" name="apiKey" value="sf_26ffa50392d0a4ff9a9f33df">
+    <!-- Ключевой параметр по документации (именно accessKey) -->
+    <input type="hidden" name="accessKey" value="sf_26ffa50392d0a4ff9a9f33df">
     
-    <!-- Стандартная тема StaticForms -->
-    <input type="hidden" name="subject" value="Map Ping submission">
+    <!-- Тема письма -->
+    <input type="hidden" name="subject" value="Новая заявка с Mapping.by">
 
-    <!-- Мета-данные -->
+    <!-- Аналитика -->
     <input type="hidden" name="page" id="page">
     <input type="hidden" name="referrer" id="referrer">
     <input type="hidden" name="utm_source" id="utm_source">
     <input type="hidden" name="utm_campaign" id="utm_campaign">
 
-    <!-- 1. Имя пользователя (Стандартное имя для StaticForms) -->
+    <!-- Имя (Обязательно) -->
     <div class="form-group">
         <label for="name">Имя *</label>
-        <input id="name" name="name" type="text" required minlength="2" maxlength="80" autocomplete="name" placeholder="Как к вам обращаться">
+        <input id="name" name="name" type="text" required minlength="2" maxlength="80" placeholder="Как к вам обращаться">
     </div>
 
-    <!-- 2. Валидный Email (КРИТИЧНО ДЛЯ SPAM-ФИЛЬТРА) -->
+    <!-- Email (НЕОБЯЗАТЕЛЬНО — без required) -->
     <div class="form-group">
-        <label for="email">Ваш Email *</label>
-        <input id="email" name="email" type="email" required autocomplete="email" placeholder="alex@domain.com">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="example@domain.com">
     </div>
 
-    <!-- 3. Телефон -->
+    <!-- Телефон (Обязательно) -->
     <div class="form-group">
         <label for="phone">Телефон или Telegram *</label>
-        <input id="phone" name="phone" type="text" required minlength="5" maxlength="30" autocomplete="tel" placeholder="+375291234567">
+        <input id="phone" name="phone" type="text" required minlength="5" maxlength="30" placeholder="+375291234567">
     </div>
 
-    <!-- 4. Доп. контакты -->
     <div class="form-group">
         <label for="social">Сайт или социальная сеть</label>
         <input id="social" name="social" type="text" placeholder="Сайт, Instagram, Telegram...">
     </div>
 
-    <!-- 5. Выпадающие списки -->
     <div class="form-group">
         <label for="business-type">Сфера бизнеса *</label>
         <select id="business-type" name="business-type" required>
@@ -173,7 +171,6 @@
         </select>
     </div>
 
-    <!-- 6. Сообщение -->
     <div class="form-group">
         <label for="message">Кратко опишите задачу</label>
         <textarea id="message" name="message" rows="4" maxlength="1500" placeholder="Необязательно"></textarea>
@@ -184,7 +181,6 @@
     </button>
 
 </form>
-
     </div>
 
 </div>
