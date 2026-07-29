@@ -97,53 +97,38 @@
 
         <div id="formMessage"></div>
 
-        <form
+       <form
     id="contactForm"
     class="contact-form"
     action="https://api.staticforms.dev/submit"
     method="POST"
     novalidate>
 
-    <!-- StaticForms -->
     <input
         type="hidden"
         name="accessKey"
-        value="sf_26ffa50392d0a4ff9a9f33df">
+        value="ВАШ_ACCESS_KEY">
 
     <input
         type="hidden"
         name="subject"
         value="Новая заявка с Mapping.by">
 
-    <!-- Только нужные скрытые поля -->
     <input type="hidden" name="page" id="page">
     <input type="hidden" name="referrer" id="referrer">
     <input type="hidden" name="utm_source" id="utm_source">
     <input type="hidden" name="utm_campaign" id="utm_campaign">
 
-    <!-- Honeypot -->
-    <div
-        style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;"
-        aria-hidden="true">
-
-        <label for="website">
-            Не заполняйте это поле
-        </label>
-
+    <div style="position:absolute;left:-10000px;">
         <input
-            id="website"
             type="text"
             name="honeypot"
             tabindex="-1"
             autocomplete="off">
-
     </div>
 
     <div class="form-group">
-
-        <label for="name">
-            Имя
-        </label>
+        <label for="name">Имя *</label>
 
         <input
             id="name"
@@ -153,48 +138,36 @@
             minlength="2"
             maxlength="80"
             autocomplete="name"
-            placeholder="Как к вам обращаться?">
-
+            placeholder="Как к вам обращаться">
     </div>
 
     <div class="form-group">
-
-        <label for="phone">
-            Телефон или Telegram
-        </label>
+        <label for="phone">Телефон или Telegram *</label>
 
         <input
             id="phone"
             name="phone"
-            type="tel"
+            type="text"
             required
-            minlength="7"
-            maxlength="25"
+            minlength="5"
+            maxlength="30"
             autocomplete="tel"
-            inputmode="tel"
             placeholder="+375291234567">
-
     </div>
 
     <div class="form-group">
-
-        <label for="social">
-            Сайт или социальная сеть
-        </label>
+        <label for="social">Сайт или социальная сеть</label>
 
         <input
             id="social"
             name="social"
-            type="url"
-            autocomplete="url"
-            placeholder="https://site.by">
-
+            type="text"
+            placeholder="Сайт, Instagram, Telegram...">
     </div>
 
     <div class="form-group">
-
         <label for="business-type">
-            Сфера бизнеса
+            Сфера бизнеса *
         </label>
 
         <select
@@ -202,70 +175,18 @@
             name="business-type"
             required>
 
-            <option value="" selected>
-                Выберите сферу бизнеса
+            <option value="">
+                Выберите
             </option>
 
-            <optgroup label="Проживание и отдых">
-                <option value="agro">Агроусадьба</option>
-                <option value="base">База отдыха</option>
-                <option value="hotel">Гостиница или отель</option>
-                <option value="camping">Кемпинг или глэмпинг</option>
-            </optgroup>
-
-            <optgroup label="Еда и напитки">
-                <option value="restaurant">Кафе, ресторан или бар</option>
-                <option value="coffee">Кофейня или пекарня</option>
-            </optgroup>
-
-            <optgroup label="Здоровье и красота">
-                <option value="spa">Баня или SPA-комплекс</option>
-                <option value="beauty">Салон красоты или барбершоп</option>
-                <option value="medical">Медицинский центр или стоматология</option>
-                <option value="pharmacy">Аптека</option>
-            </optgroup>
-
-            <optgroup label="Авто">
-                <option value="auto-service">
-                    Автосервис, шиномонтаж или автомойка
-                </option>
-
-                <option value="gas">
-                    АЗС
-                </option>
-            </optgroup>
-
-            <optgroup label="Туризм и развлечения">
-                <option value="tourism">
-                    Туристический объект
-                </option>
-
-                <option value="active">
-                    Активный отдых
-                </option>
-
-                <option value="fitness">
-                    Фитнес-клуб
-                </option>
-
-                <option value="entertainment">
-                    Развлекательный центр
-                </option>
-            </optgroup>
-
-            <optgroup label="Бизнес и услуги">
-                <option value="shop">
-                    Магазин
-                </option>
-
-                <option value="office">
-                    Офис
-                </option>
-
-                <option value="any">
-                    Любой локальный бизнес
-                </option>
-            </optgroup>
+            <option>Агроусадьба</option>
+            <option>База отдыха</option>
+            <option>Отель</option>
+            <option>Кафе / ресторан</option>
+            <option>Салон красоты</option>
+            <option>Автосервис</option>
+            <option>Магазин</option>
+            <option>Другое</option>
 
         </select>
 
@@ -274,7 +195,7 @@
     <div class="form-group">
 
         <label for="maps-status">
-            Есть ли вы на картах?
+            Есть ли бизнес на картах? *
         </label>
 
         <select
@@ -283,24 +204,12 @@
             required>
 
             <option value="">
-                Выберите вариант
+                Выберите
             </option>
 
-            <option value="yes">
-                Да, в Яндекс и Google
-            </option>
-
-            <option value="yandex-only">
-                Только в Яндекс
-            </option>
-
-            <option value="google-only">
-                Только в Google
-            </option>
-
-            <option value="no">
-                Нет / Не знаю
-            </option>
+            <option>Да</option>
+            <option>Нет</option>
+            <option>Не знаю</option>
 
         </select>
 
@@ -316,16 +225,14 @@
             id="message"
             name="message"
             rows="4"
-            required
-            minlength="15"
             maxlength="1500"
-            placeholder="Например: хочу получать больше клиентов с карт, сейчас нас почти не видно"></textarea>
+            placeholder="Необязательно"></textarea>
 
     </div>
 
     <button
-        type="submit"
         id="submitButton"
+        type="submit"
         class="btn btn-primary">
 
         <span class="submit-text">
@@ -334,12 +241,9 @@
 
     </button>
 
-    <p class="form-note">
-        Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
-    </p>
-
 </form>
 
+<div id="formMessage"></div>
     </div>
 
 </div>
