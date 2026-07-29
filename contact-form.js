@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 5. НАСТОЯЩАЯ ОТПРАВКА ФОРМЫ B STATICFORMS
+  // 5. НАСТОЯЩАЯ ОТПРАВКА ФОРМЫ В STATICFORMS
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     fillHiddenFields(); // Заполняем utm и referrer перед отправкой
@@ -76,25 +76,13 @@ document.addEventListener('DOMContentLoaded', function() {
       if (submitBtn) submitBtn.disabled = true;
 
       try {
-        // Собираем данные
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData.entries());
-
-        // Удаляем пустые поля (чтобы не провоцировать спам-фильтр StaticForms)
-        Object.keys(data).forEach(key => {
-          if (data[key] === "" || data[key] === null) {
-            delete data[key];
-          }
-        });
-
-        // Реальный JSON запрос в StaticForms
+        // Передаем стандартный FormData (без конвертации в JSON и ручного удаления полей)
         const response = await fetch(contactForm.action, {
           method: 'POST',
+          body: new FormData(contactForm),
           headers: {
-            'Content-Type': 'application/json',
             'Accept': 'application/json'
-          },
-          body: JSON.stringify(data)
+          }
         });
 
         const result = await response.json();
@@ -121,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // Валидация полей
+    // Валидация полей (сработает только на обязательные поля с атрибутом required)
     const inputs = contactForm.querySelectorAll('input[required], select[required]');
     inputs.forEach(input => {
       input.addEventListener('blur', validateField);
