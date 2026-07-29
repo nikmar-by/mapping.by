@@ -116,24 +116,29 @@
                 value="Новая заявка с Mapping.by">
 
             <!-- Honeypot -->
-            <input
-                type="text"
-                name="honeypot"
-                style="display:none">
+           <div
+    style="position:absolute;left:-9999px;"
+    aria-hidden="true">
+
+    <label>
+        Не заполняйте это поле
+
+        <input
+            type="text"
+            name="honeypot"
+            tabindex="-1"
+            autocomplete="off">
+
+    </label>
+
+</div>
 
             <!-- Дополнительная информация -->
             <input type="hidden" name="page" id="page">
-            <input type="hidden" name="date" id="date">
-            <input type="hidden" name="userAgent" id="userAgent">
-            <input type="hidden" name="referrer" id="referrer">
-
+           <input type="hidden" name="referrer" id="referrer">
             <input type="hidden" name="utm_source" id="utm_source">
-            <input type="hidden" name="utm_medium" id="utm_medium">
-            <input type="hidden" name="utm_campaign" id="utm_campaign">
-            <input type="hidden" name="utm_content" id="utm_content">
-            <input type="hidden" name="utm_term" id="utm_term">
-
-            <div class="form-group">
+           <input type="hidden" name="utm_campaign" id="utm_campaign">
+           <div class="form-group">
 
                 <label for="name">
                     Имя
