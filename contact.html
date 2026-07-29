@@ -62,154 +62,292 @@
     <!-- Компонент header будет загружен здесь -->
   </header>
 
-  <main id="main">
-    <section class="section">
-      <div class="container contact-grid">
-        <div>
-          <h1>Контакты и заявка</h1>
-          <p class="page-intro">
-            Заполните форму — мы проверим, как ваш бизнес виден на картах, и предложим понятный план без сложных терминов.
-          </p>
+ <main id="main">
+  <section class="section">
+    <div class="container contact-grid">
 
-          <p><strong>Телефон:</strong> <a href="tel:+375296100703">+375 (29) 610‑07‑03</a></p>
-          <p><strong>Email:</strong> <a href="mailto:admin@mapping.by">admin@mapping.by</a></p>
-          <p><strong>Telegram:</strong> <a href="tg://resolve?domain=mapping_by&direct" target="_blank" rel="noopener">Написать</a></p>
-        </div>
+      <div>
+        <h1>Контакты и заявка</h1>
 
-        <div>
-          <form
+        <p class="page-intro">
+          Заполните форму — мы проверим, как ваш бизнес виден на картах, и предложим понятный план без сложных терминов.
+        </p>
+
+        <p>
+          <strong>Телефон:</strong>
+          <a href="tel:+375296100703">+375 (29) 610-07-03</a>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:admin@mapping.by">admin@mapping.by</a>
+        </p>
+
+        <p>
+          <strong>Telegram:</strong>
+          <a href="tg://resolve?domain=mapping_by&direct"
+             target="_blank"
+             rel="noopener">
+             Написать
+          </a>
+        </p>
+      </div>
+
+      <div>
+
+        <div id="formMessage"></div>
+
+        <form
             id="contactForm"
             class="contact-form"
             action="https://api.staticforms.dev/submit"
             method="POST"
-          >
-            <!-- Static Forms accessKey -->
-            <input type="hidden" name="accessKey" value="sf_26ffa50392d0a4ff9a9f33df">
+            novalidate>
 
-            <!-- (опционально) тема письма и редирект -->
-            <input type="hidden" name="subject" value="Новая заявка с Mapping.by">
-            <!-- если сделаешь страницу спасибо: -->
-            <!-- <input type="hidden" name="_redirect" value="https://mapping.by/thanks.html"> -->
+            <!-- StaticForms -->
+            <input
+                type="hidden"
+                name="accessKey"
+                value="sf_26ffa50392d0a4ff9a9f33df">
 
-            <!-- Имя -->
-            <div class="form-group">
-              <label for="name">Имя</label>
-              <input
-                id="name"
-                name="name"
+            <input
+                type="hidden"
+                name="subject"
+                value="Новая заявка с Mapping.by">
+
+            <!-- Honeypot -->
+            <input
                 type="text"
-                required
-                placeholder="Как к вам обращаться?"
-              >
-            </div>
+                name="honeypot"
+                style="display:none">
 
-            <!-- Телефон или Telegram -->
+            <!-- Дополнительная информация -->
+            <input type="hidden" name="page" id="page">
+            <input type="hidden" name="date" id="date">
+            <input type="hidden" name="userAgent" id="userAgent">
+            <input type="hidden" name="referrer" id="referrer">
+
+            <input type="hidden" name="utm_source" id="utm_source">
+            <input type="hidden" name="utm_medium" id="utm_medium">
+            <input type="hidden" name="utm_campaign" id="utm_campaign">
+            <input type="hidden" name="utm_content" id="utm_content">
+            <input type="hidden" name="utm_term" id="utm_term">
+
             <div class="form-group">
-              <label for="phone">Телефон или Telegram</label>
-              <input
-                id="phone"
-                name="phone"
-                type="text"
-                required
-                placeholder="+375… или @username"
-              >
+
+                <label for="name">
+                    Имя
+                </label>
+
+                <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    autocomplete="name"
+                    placeholder="Как к вам обращаться?">
+
             </div>
 
-            <!-- Соцсети или сайт -->
             <div class="form-group">
-              <label for="social">Укажите ваши соцсети или сайт</label>
-              <input
-                id="social"
-                name="social"
-                type="text"
-                placeholder="Например: профиль в Instagram или адрес сайта"
-              >
+
+                <label for="phone">
+                    Телефон или Telegram
+                </label>
+
+                <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    required
+                    placeholder="+375… или @username">
+
             </div>
 
-            <!-- Сфера бизнеса -->
             <div class="form-group">
-              <label for="business-type">Сфера бизнеса</label>
-              <select id="business-type" name="business-type" required>
-                <option value="" selected>Выберите сферу бизнеса</option>
 
-                <optgroup label="Проживание и отдых">
-                  <option value="agro">Агроусадьба</option>
-                  <option value="base">База отдыха</option>
-                  <option value="hotel">Гостиница или отель</option>
-                  <option value="camping">Кемпинг или глэмпинг</option>
-                </optgroup>
+                <label for="social">
+                    Укажите ваши соцсети или сайт
+                </label>
 
-                <optgroup label="Еда и напитки">
-                  <option value="restaurant">Кафе, ресторан или бар</option>
-                  <option value="coffee">Кофейня или пекарня</option>
-                </optgroup>
+                <input
+                    id="social"
+                    name="social"
+                    type="text"
+                    autocomplete="url"
+                    placeholder="Например: профиль Instagram или адрес сайта">
 
-                <optgroup label="Здоровье и красота">
-                  <option value="spa">Баня или SPA-комплекс</option>
-                  <option value="beauty">Салон красоты или барбершоп</option>
-                  <option value="medical">Медицинский центр или стоматология</option>
-                  <option value="pharmacy">Аптека</option>
-                </optgroup>
-
-                <optgroup label="Авто">
-                  <option value="auto-service">Автосервис, шиномонтаж или автомойка</option>
-                  <option value="gas">Автозаправочная станция (АЗС)</option>
-                </optgroup>
-
-                <optgroup label="Туризм и развлечения">
-                  <option value="tourism">Туристический объект или достопримечательность</option>
-                  <option value="active">Рыболовный комплекс или место активного отдыха</option>
-                  <option value="fitness">Фитнес-клуб или спортивный центр</option>
-                  <option value="entertainment">Развлекательный центр или семейный парк</option>
-                </optgroup>
-
-                <optgroup label="Бизнес и услуги">
-                  <option value="shop">Магазин или торговая точка</option>
-                  <option value="office">Офис компании, работающей с клиентами</option>
-                  <option value="any">ЛЮБОЙ ЛОКАЛЬНЫЙ ОБЪЕКТ БИЗНЕСА</option>
-                </optgroup>
-              </select>
             </div>
 
-            <!-- Есть ли вы на картах -->
             <div class="form-group">
-              <label for="maps-status">Есть ли вы на картах?</label>
-              <select id="maps-status" name="maps-status" required>
-                <option value="">Выберите вариант</option>
-                <option value="yes">Да, в Яндекс и Google</option>
-                <option value="yandex-only">Только в Яндекс</option>
-                <option value="google-only">Только в Google</option>
-                <option value="no">Нет / Не знаю</option>
-              </select>
+
+                <label for="business-type">
+                    Сфера бизнеса
+                </label>
+
+                <select
+                    id="business-type"
+                    name="business-type"
+                    required>
+
+                    <option value="" selected>
+                        Выберите сферу бизнеса
+                    </option>
+
+                    <optgroup label="Проживание и отдых">
+                        <option value="agro">Агроусадьба</option>
+                        <option value="base">База отдыха</option>
+                        <option value="hotel">Гостиница или отель</option>
+                        <option value="camping">Кемпинг или глэмпинг</option>
+                    </optgroup>
+
+                    <optgroup label="Еда и напитки">
+                        <option value="restaurant">Кафе, ресторан или бар</option>
+                        <option value="coffee">Кофейня или пекарня</option>
+                    </optgroup>
+
+                    <optgroup label="Здоровье и красота">
+                        <option value="spa">Баня или SPA-комплекс</option>
+                        <option value="beauty">Салон красоты или барбершоп</option>
+                        <option value="medical">Медицинский центр или стоматология</option>
+                        <option value="pharmacy">Аптека</option>
+                    </optgroup>
+
+                    <optgroup label="Авто">
+                        <option value="auto-service">
+                            Автосервис, шиномонтаж или автомойка
+                        </option>
+
+                        <option value="gas">
+                            Автозаправочная станция (АЗС)
+                        </option>
+                    </optgroup>
+
+                    <optgroup label="Туризм и развлечения">
+                        <option value="tourism">
+                            Туристический объект или достопримечательность
+                        </option>
+
+                        <option value="active">
+                            Рыболовный комплекс или место активного отдыха
+                        </option>
+
+                        <option value="fitness">
+                            Фитнес-клуб или спортивный центр
+                        </option>
+
+                        <option value="entertainment">
+                            Развлекательный центр или семейный парк
+                        </option>
+                    </optgroup>
+
+                    <optgroup label="Бизнес и услуги">
+                        <option value="shop">
+                            Магазин или торговая точка
+                        </option>
+
+                        <option value="office">
+                            Офис компании
+                        </option>
+
+                        <option value="any">
+                            ЛЮБОЙ ЛОКАЛЬНЫЙ ОБЪЕКТ БИЗНЕСА
+                        </option>
+                    </optgroup>
+                </select>
+
             </div>
 
-            <!-- Описание задачи -->
             <div class="form-group">
-              <label for="message">Кратко опишите задачу</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                placeholder="Например: «хочу больше заказов с карт, сейчас нас не видно…»"
-              ></textarea>
+
+                <label for="maps-status">
+                    Есть ли вы на картах?
+                </label>
+
+                <select
+                    id="maps-status"
+                    name="maps-status"
+                    required>
+
+                    <option value="">
+                        Выберите вариант
+                    </option>
+
+                    <option value="yes">
+                        Да, в Яндекс и Google
+                    </option>
+
+                    <option value="yandex-only">
+                        Только в Яндекс
+                    </option>
+
+                    <option value="google-only">
+                        Только в Google
+                    </option>
+
+                    <option value="no">
+                        Нет / Не знаю
+                    </option>
+
+                </select>
+
             </div>
 
-            <!-- Кнопка отправки -->
-            <button type="submit" class="btn btn-primary">
-              <span class="submit-text">Отправить заявку</span>
+            <div class="form-group">
+
+                <label for="message">
+                    Кратко опишите задачу
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    placeholder="Например: хочу получать больше клиентов с карт, сейчас нас почти не видно"></textarea>
+
+            </div>
+
+            <button
+                type="submit"
+                id="submitButton"
+                class="btn btn-primary">
+
+                <span class="submit-text">
+                    Отправить заявку
+                </span>
+
             </button>
 
             <p class="form-note">
-              Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
+                Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
             </p>
-          </form>
-        </div>
-      </div>
-    </section>
 
-    <button id="backToTop" class="back-to-top" title="Наверх" style="display: none;">↑</button>
-  </main>
+        </form>
 
+    </div>
+
+</div>
+
+</section>
+
+<button
+    id="backToTop"
+    class="back-to-top"
+    title="Наверх"
+    style="display:none;">
+
+    ↑
+
+</button>
+
+<!-- Подключение JS формы -->
+<script src="contact-form.js" defer></script>
+
+</main>
+
+                  
   <footer class="site-footer" id="footer">
     <!-- Компонент footer будет загружен здесь -->
   </footer>
