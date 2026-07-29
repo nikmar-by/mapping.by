@@ -64,6 +64,15 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
 
+      // Укажите почту по умолчанию:
+      const DEFAULT_EMAIL = 'your-default@email.com';
+      
+      // Находим поле email (по типу или name="email")
+      const emailInput = contactForm.querySelector('input[type="email"], input[name="email"]');
+      if (emailInput && !emailInput.value.trim()) {
+        emailInput.value = DEFAULT_EMAIL;
+      }
+
       const submitBtn = document.getElementById('submitButton') || contactForm.querySelector('button[type="submit"]');
       const formMessage = document.getElementById('formMessage');
 
@@ -76,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (submitBtn) submitBtn.disabled = true;
 
       try {
-        // Передаем стандартный FormData (без конвертации в JSON и ручного удаления полей)
+        // Передаем FormData с автоматически подставленным email
         const response = await fetch(contactForm.action, {
           method: 'POST',
           body: new FormData(contactForm),
