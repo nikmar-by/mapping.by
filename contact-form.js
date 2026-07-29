@@ -64,17 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
 
-      // Укажите НАСТОЯЩИЙ, существующий email
-      const DEFAULT_EMAIL = 'info@yourdomain.com'; // 👈 Впишите существующий адрес!
-      
-      const emailInput = contactForm.querySelector('input[type="email"], input[name="email"]');
-      
-      // Если поле пустое — подставляем дефолтный email
-      if (emailInput && !emailInput.value.trim()) {
-        emailInput.value = DEFAULT_EMAIL;
-        emailInput.dispatchEvent(new Event('input', { bubbles: true }));
-      }
-
       const submitBtn = document.getElementById('submitButton') || contactForm.querySelector('button[type="submit"]');
       const formMessage = document.getElementById('formMessage');
 
@@ -87,11 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
       if (submitBtn) submitBtn.disabled = true;
 
       try {
-        const formData = new FormData(contactForm);
-
+        // Передаем стандартный FormData (без конвертации в JSON и ручного удаления полей)
         const response = await fetch(contactForm.action, {
           method: 'POST',
-          body: formData,
+          body: new FormData(contactForm),
           headers: {
             'Accept': 'application/json'
           }
@@ -121,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // Валидация полей
+    // Валидация полей (сработает только на обязательные поля с атрибутом required)
     const inputs = contactForm.querySelectorAll('input[required], select[required]');
     inputs.forEach(input => {
       input.addEventListener('blur', validateField);
