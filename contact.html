@@ -99,40 +99,43 @@
 
 <form id="contactForm" class="contact-form" action="https://api.staticforms.dev/submit" method="POST" novalidate>
 
+    <!-- Обязательный apiKey -->
     <input type="hidden" name="apiKey" value="sf_26ffa50392d0a4ff9a9f33df">
-  
-    <!-- Скрытый фолбэк для антиспам-проверки StaticForms -->
-    <input type="hidden" name="email" value="noreply@mapping.by">
-  
-    <!-- Изменено: латиница снижает риск срабатывания спам-фильтров -->
-    <input type="hidden" name="subject" value="New lead from Mapping.by">
+    
+    <!-- Стандартная тема StaticForms -->
+    <input type="hidden" name="subject" value="Map Ping submission">
 
-    <!-- Дополнительные мета-данные -->
+    <!-- Мета-данные -->
     <input type="hidden" name="page" id="page">
     <input type="hidden" name="referrer" id="referrer">
     <input type="hidden" name="utm_source" id="utm_source">
     <input type="hidden" name="utm_campaign" id="utm_campaign">
 
-    <!-- Оптимизированный Honeypot без агрессивного left: -10000px -->
-    <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; overflow: hidden;" aria-hidden="true">
-        <input type="text" name="honeypot" tabindex="-1" autocomplete="off">
-    </div>
-
+    <!-- 1. Имя пользователя (Стандартное имя для StaticForms) -->
     <div class="form-group">
         <label for="name">Имя *</label>
         <input id="name" name="name" type="text" required minlength="2" maxlength="80" autocomplete="name" placeholder="Как к вам обращаться">
     </div>
 
+    <!-- 2. Валидный Email (КРИТИЧНО ДЛЯ SPAM-ФИЛЬТРА) -->
+    <div class="form-group">
+        <label for="email">Ваш Email *</label>
+        <input id="email" name="email" type="email" required autocomplete="email" placeholder="alex@domain.com">
+    </div>
+
+    <!-- 3. Телефон -->
     <div class="form-group">
         <label for="phone">Телефон или Telegram *</label>
         <input id="phone" name="phone" type="text" required minlength="5" maxlength="30" autocomplete="tel" placeholder="+375291234567">
     </div>
 
+    <!-- 4. Доп. контакты -->
     <div class="form-group">
         <label for="social">Сайт или социальная сеть</label>
         <input id="social" name="social" type="text" placeholder="Сайт, Instagram, Telegram...">
     </div>
 
+    <!-- 5. Выпадающие списки -->
     <div class="form-group">
         <label for="business-type">Сфера бизнеса *</label>
         <select id="business-type" name="business-type" required>
@@ -170,6 +173,7 @@
         </select>
     </div>
 
+    <!-- 6. Сообщение -->
     <div class="form-group">
         <label for="message">Кратко опишите задачу</label>
         <textarea id="message" name="message" rows="4" maxlength="1500" placeholder="Необязательно"></textarea>
