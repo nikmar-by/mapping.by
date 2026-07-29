@@ -1,116 +1,217 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', function() {
 
-    const form = document.getElementById("contactForm");
+  // 1. Загрузка компонентов Header и Footer
+  loadComponent('header', '/components/header.html');
+  loadComponent('footer', '/components/footer.html');
 
-    if (!form) return;
+  // 2. Инициализация FAQ
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const answer = button.nextElementSibling;
+      const isOpen = button.classList.contains('active');
 
-    const button = document.getElementById("submitButton");
-    const buttonText = button.querySelector(".submit-text");
-    const messageBox = document.getElementById("formMessage");
+      document.querySelectorAll('.faq-question').forEach(b => {
+        b.classList.remove('active');
+        const a = b.nextElementSibling;
+        if (a) a.style.maxHeight = null;
+      });
 
-    function fillHiddenFields() {
-        const params = new URLSearchParams(window.location.search);
-
-        const pageInput = document.getElementById("page");
-        const referrerInput = document.getElementById("referrer");
-        const utmSourceInput = document.getElementById("utm_source");
-        const utmCampaignInput = document.getElementById("utm_campaign");
-
-        if (pageInput) pageInput.value = window.location.href;
-        if (referrerInput) referrerInput.value = document.referrer;
-        if (utmSourceInput) utmSourceInput.value = params.get("utm_source") || "";
-        if (utmCampaignInput) utmCampaignInput.value = params.get("utm_campaign") || "";
-    }
-
-    fillHiddenFields();
-
-    function showMessage(type, text) {
-        messageBox.innerHTML = `
-            <div class="form-${type}">
-                ${text}
-            </div>
-        `;
-
-        messageBox.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-    }
-
-    form.addEventListener("submit", async function (e) {
-
-        e.preventDefault();
-
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
+      if (!isOpen) {
+        button.classList.add('active');
+        if (answer) {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
         }
+      }
+    });
+  });
 
-        button.disabled = true;
-        if (buttonText) buttonText.textContent = "Отправляем...";
-
-        messageBox.innerHTML = "";
-
-        try {
-            // Преобразуем данные формы в обычный JS-объект
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
-
-            // Удаляем пустые поля, чтобы не забивать запрос невалидными пустыми строками
-            Object.keys(data).forEach(key => {
-                if (data[key] === "" || data[key] === null) {
-                    delete data[key];
-                }
-            });
-
-            // Отправляем как чистый JSON-запрос
-            const response = await fetch(form.action, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify(data)
-            });
-
-            const result = await response.json();
-
-            if (response.ok && result.success) {
-
-                showMessage(
-                    "success",
-                    `
-                    <h3>Спасибо!</h3>
-                    <p>Ваша заявка успешно отправлена.</p>
-                    `
-                );
-
-                form.reset();
-                fillHiddenFields();
-
-            } else {
-                throw new Error(result.message || "Ошибка отправки формы");
-            }
-
-        } catch (error) {
-
-            console.error("StaticForms Error:", error);
-
-            showMessage(
-                "error",
-                `
-                <h3>Ошибка</h3>
-                <p>Не удалось отправить заявку. Попробуйте ещё раз.</p>
-                `
-            );
-
-        } finally {
-
-            button.disabled = false;
-            if (buttonText) buttonText.textContent = "Отправить заявку";
-
-        }
-
+  // 3. Кнопка "Наверх"
+  const backToTopButton = document.getElementById('backToTop');
+  if (backToTopButton) {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
     });
 
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // 4. Скрипт-ускоритель для Telegram
+  const fastTgLink = document.getElementById('fast-tg-link');
+  if (fastTgLink) {
+    fastTgLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      const fallbackUrl = this.href;
+      window.location.href = 'tg://resolve?domain=mapping_by&direct';
+      setTimeout(function() {
+        if (!document.hidden) {
+          window.open(fallbackUrl, '_blank');
+        }
+      }, 500);
+    });
+  }
+
+  // 5. НАСТОЯЩАЯ ОТПРАВКА ФОРМЫ B STATICFORMS
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    fillHiddenFields(); // Заполняем utm и referrer перед отправкой
+
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const submitBtn = document.getElementById('submitButton') || contactForm.querySelector('button[type="submit"]');
+      const formMessage = document.getElementById('formMessage');
+
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+
+      // Состояние загрузки
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        // Собираем данные
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData.entries());
+
+        // Удаляем пустые поля (чтобы не провоцировать спам-фильтр StaticForms)
+        Object.keys(data).forEach(key => {
+          if (data[key] === "" || data[key] === null) {
+            delete data[key];
+          }
+        });
+
+        // Реальный JSON запрос в StaticForms
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          if (formMessage) {
+            formMessage.innerHTML = '<div class="form-success"><h3>Спасибо!</h3><p>Ваша заявка успешно отправлена.</p></div>';
+            formMessage.style.display = 'block';
+          }
+          contactForm.reset();
+          fillHiddenFields();
+        } else {
+          throw new Error(result.message || 'Ошибка сервера');
+        }
+
+      } catch (error) {
+        console.error('StaticForms Error:', error);
+        if (formMessage) {
+          formMessage.innerHTML = '<div class="form-error"><h3>Ошибка</h3><p>Не удалось отправить заявку. Попробуйте еще раз.</p></div>';
+          formMessage.style.display = 'block';
+        }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+
+    // Валидация полей
+    const inputs = contactForm.querySelectorAll('input[required], select[required]');
+    inputs.forEach(input => {
+      input.addEventListener('blur', validateField);
+    });
+  }
+
 });
+
+// Заполнение скрытых полей аналитики
+function fillHiddenFields() {
+  const params = new URLSearchParams(window.location.search);
+  const page = document.getElementById("page");
+  const referrer = document.getElementById("referrer");
+  const utmSource = document.getElementById("utm_source");
+  const utmCampaign = document.getElementById("utm_campaign");
+
+  if (page) page.value = window.location.href;
+  if (referrer) referrer.value = document.referrer;
+  if (utmSource) utmSource.value = params.get("utm_source") || "";
+  if (utmCampaign) utmCampaign.value = params.get("utm_campaign") || "";
+}
+
+// Валидация отдельных полей
+function validateField(e) {
+  const field = e.target;
+  const group = field.closest('.form-group');
+  if (!group) return;
+  const feedback = group.querySelector('.form-feedback');
+
+  if (field.value.trim() === '') {
+    group.classList.remove('success');
+    group.classList.add('error');
+    if (feedback) {
+      feedback.textContent = 'Это поле обязательно для заполнения';
+      feedback.className = 'form-feedback error';
+    }
+  } else {
+    group.classList.remove('error');
+    group.classList.add('success');
+    if (feedback) {
+      feedback.textContent = '✓';
+      feedback.className = 'form-feedback success';
+    }
+  }
+}
+
+// Вспомогательная функция загрузки компонентов
+async function loadComponent(elementId, componentPath) {
+  try {
+    const response = await fetch(componentPath);
+    if (!response.ok) return;
+    const componentHTML = await response.text();
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.innerHTML = componentHTML;
+      if (elementId === 'header') initHeaderScripts();
+    }
+  } catch (error) {
+    console.error('Ошибка загрузки компонента:', error);
+  }
+}
+
+// Инициализация скриптов для Хедера после его вставки в DOM
+function initHeaderScripts() {
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      mobileMenu.style.display = mobileMenu.classList.contains('active') ? 'flex' : 'none';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        mobileMenu.style.display = 'none';
+      });
+    });
+  }
+
+  document.querySelectorAll('.main-nav .nav-link, .mobile-nav .nav-link').forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add('active');
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if (!header) return;
+    header.style.boxShadow = window.scrollY > 10 ? '0 2px 10px rgba(15,23,42,0.08)' : 'none';
+  });
+}
